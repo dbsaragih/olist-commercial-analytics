@@ -1,0 +1,17 @@
+# Python environment and cache
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Secrets (database password lives here)
+.env
+
+# Data files (too large for GitHub; download instructions go in the README)
+data/raw/*
+data/interim/*
+data/processed/*
+
+# Power BI cache files
+*.pbix.bak
+.pbi/cache.abf
