@@ -14,7 +14,7 @@ data/processed/*
 
 # Power BI cache files
 *.pbix.bak
-   # Editor settings
-   .vscode/
+# Editor settings
+.vscode/
 
 .pbi/cache.abf
