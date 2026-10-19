@@ -35,6 +35,8 @@ erDiagram
         text    product_id FK
         text    seller_id FK
         text    customer_unique_id FK
+        text    delivery_state
+        text    delivery_region
         int     purchase_date_key FK
         numeric price
         numeric freight_value
@@ -66,7 +68,7 @@ erDiagram
 
 | Table | Grain | Used for | Key measures |
 |---|---|---|---|
-| `fact_order_items` | One item line in an order | BQ1, BQ4, BQ5 | price (GMV), freight_value, freight_share |
+| `fact_order_items` | One item line in an order | BQ1, BQ4, BQ5 | price (GMV), freight_value, freight_share; delivery_state and delivery_region copied from the order |
 | `fact_orders` | One order | BQ2, BQ3, BQ5 | order_gmv, delivery_days, days_vs_estimate, is_late, review_score |
 
 The two facts are not joined directly; they share `order_id` as a degenerate
@@ -91,3 +93,4 @@ dimension and connect through the conformed dimensions.
 | Region stored as a dimension attribute | Avoids a snowflake; simpler for Power BI |
 | Exclusions stored as flags, not deleted rows | Keeps data complete; each analysis filters as needed; allows with/without sensitivity checks |
 | Payments not modelled | GMV uses item prices; payments were a reconciliation check only |
+| Delivery state and region also stored on `fact_order_items` | BQ5 analyses freight by category and region at item level; copying the order's delivery location avoids joining the two fact tables |
