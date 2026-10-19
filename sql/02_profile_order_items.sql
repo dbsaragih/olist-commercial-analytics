@@ -121,9 +121,11 @@ WHERE shipping_limit_date !~ '^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$'
 LIMIT 20;
 
 -- 5.3 Date range
+-- Olist timestamps carry no time zone, so cast with ::timestamp
+-- (not ::timestamptz, which would apply the session time zone).
 SELECT
-    MIN(shipping_limit_date::timestamptz) AS min_ts,
-    MAX(shipping_limit_date::timestamptz) AS max_ts
+    MIN(shipping_limit_date::timestamp) AS min_ts,
+    MAX(shipping_limit_date::timestamp) AS max_ts
 FROM raw.order_items
 WHERE shipping_limit_date ~ '^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$';
 
