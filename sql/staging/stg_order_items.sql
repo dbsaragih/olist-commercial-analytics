@@ -8,6 +8,7 @@
 
 CREATE SCHEMA IF NOT EXISTS staging;
 
+
 DROP VIEW IF EXISTS staging.stg_order_items CASCADE;
 
 CREATE VIEW staging.stg_order_items AS
@@ -20,3 +21,9 @@ SELECT
     price::numeric                      AS price,
     freight_value::numeric              AS freight_value
 FROM raw.order_items;
+
+
+SELECT table_schema, table_name
+FROM information_schema.views
+WHERE table_schema = 'staging'
+ORDER BY table_name;
