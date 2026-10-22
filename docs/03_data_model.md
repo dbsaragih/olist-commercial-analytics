@@ -13,6 +13,7 @@ at order grain prevents them being counted once per item.
 ```mermaid
 erDiagram
     dim_date     ||--o{ fact_orders      : "purchase date"
+    dim_date     |o--o{ fact_orders      : "delivered date"
     dim_customer ||--o{ fact_orders      : "places"
     dim_date     ||--o{ fact_order_items : "purchase date"
     dim_customer ||--o{ fact_order_items : "buys"
@@ -23,11 +24,13 @@ erDiagram
         text    order_id PK
         text    customer_unique_id FK
         int     purchase_date_key FK
+        int     delivered_date_key FK "NULL if not delivered"
         text    delivery_state
         numeric order_gmv
         int     delivery_days
         boolean is_late
         int     review_score
+        boolean has_review
     }
     fact_order_items {
         text    order_id PK
@@ -35,21 +38,21 @@ erDiagram
         text    product_id FK
         text    seller_id FK
         text    customer_unique_id FK
-        text    delivery_state
-        text    delivery_region
         int     purchase_date_key FK
+        text    delivery_state
         numeric price
         numeric freight_value
+        boolean excl_handover
     }
     dim_customer {
-        text customer_unique_id PK
-        text state
-        text region
+        text    customer_unique_id PK
+        text    state
+        text    region
         boolean is_repeat_customer
     }
     dim_product {
         text product_id PK
-        text category_en
+        text category_name_en
     }
     dim_seller {
         text seller_id PK
@@ -57,9 +60,9 @@ erDiagram
         text region
     }
     dim_date {
-        int  date_key PK
-        date full_date
-        text year_month
+        int     date_key PK
+        date    full_date
+        text    year_month
         boolean in_analysis_period
     }
 ```
@@ -93,4 +96,4 @@ dimension and connect through the conformed dimensions.
 | Region stored as a dimension attribute | Avoids a snowflake; simpler for Power BI |
 | Exclusions stored as flags, not deleted rows | Keeps data complete; each analysis filters as needed; allows with/without sensitivity checks |
 | Payments not modelled | GMV uses item prices; payments were a reconciliation check only |
-| Delivery state and region also stored on `fact_order_items` | BQ5 analyses freight by category and region at item level; copying the order's delivery location avoids joining the two fact tables |
+| Delivery state and region also stored on `fact_order_items` | BQ5 analyses freight by category and region at item level; copying the order's delivery location avoids joining the two fact tables | `dim_date` used twice by `fact_orders` (purchase and delivered date) | Role-playing dimension: one date table, two relationships; in Power BI the delivered-date relationship is inactive and used via USERELATIONSHIP |
