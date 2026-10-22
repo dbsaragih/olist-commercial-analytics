@@ -32,7 +32,6 @@ SELECT COUNT(*) FILTER (WHERE has_review)           AS with_review,
        COUNT(*) FILTER (WHERE excl_carrier_leg)     AS t4
 FROM mart.fact_orders;
 
-
 -- 6. Logic checks. Expect: 96470 | 6 | 0 | 0
 --    a) delivered orders with a delivery time = 96478 delivered - 8 (T3)
 --    b) non-delivered orders that still have a delivery time (finding O6)
@@ -44,13 +43,6 @@ SELECT COUNT(delivery_days) FILTER (WHERE is_delivered)            AS delivered_
        COUNT(*) FILTER (WHERE seller_handover_days < 0
                           AND NOT excl_carrier_leg)                AS unflagged_negative_handover
 FROM mart.fact_orders;
-
-
-
-
-
-
-
 
 -- 7. Orders affected by T5 (no expected value: record it)
 SELECT COUNT(*) FILTER (WHERE excl_handover) AS t5_orders
