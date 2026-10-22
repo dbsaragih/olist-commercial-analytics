@@ -2,7 +2,7 @@
 
 **End-to-end analytics project on the Olist Brazilian e-commerce dataset: from raw data to business recommendations.**
 
-> **Status: in progress.** Data foundation complete (setup, raw data load, profiling, data quality review). Analysis, dashboard and recommendations are next.
+> **Status: in progress.** Data foundation and ETL pipeline complete: raw load, profiling, data quality review, and a tested star schema in PostgreSQL. Pipeline automation, analysis, dashboard and recommendations are next.
 
 ---
 
@@ -29,7 +29,20 @@ Full definitions, hypotheses and scope: [docs/01_problem_statement.md](docs/01_p
 - **Analysis period:** Jan 2017 – Aug 2018 (2016 is incomplete; Sep–Oct 2018 is the extract cut-off, confirmed during profiling)
 - Raw data is **not** stored in this repo. See *How to run* below.
 
-## 3. Progress
+## 3. ETL pipeline
+
+A reproducible ETL pipeline (ELT pattern) loads 1.55 million rows from 9 source files into PostgreSQL and transforms them through three layers:
+
+| Layer | Contents | Built by |
+|---|---|---|
+| `raw` | Exact copy of the 9 source files, validated by row counts | `src/load_raw.py` |
+| `staging` | 8 views: correct types, consistent names, data-quality flags | `sql/staging/` |
+| `mart` | Star schema: 4 dimensions, 2 fact tables, enforced primary and foreign keys | `sql/marts/` |
+
+Every step is scripted and rerunnable, and each layer is checked with reconciliation tests (`tests/`) against independently verified numbers.
+Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
+
+## 4. Progress
 
 | Stage | Output | Status |
 |---|---|---|
@@ -39,42 +52,60 @@ Full definitions, hypotheses and scope: [docs/01_problem_statement.md](docs/01_p
 | 4. Raw data load | `src/load_raw.py` → `raw` schema in PostgreSQL | ✅ Done |
 | 5. Data profiling | `sql/01–03_profile_*.sql` | ✅ Done |
 | 6. Data quality findings | [docs/02_data_quality_findings.md](docs/02_data_quality_findings.md) | ✅ Done |
-| 7. Data model | `docs/03_data_model.md` (star schema design) | ✅ Done |
-| 8. Analysis | SQL + Python analysis answering BQ1–BQ5 | ⏳ Next |
-| 9. Dashboard | Power BI executive dashboard | ⏳ Planned |
-| 10. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
+| 7. Data model | [docs/03_data_model.md](docs/03_data_model.md) (star schema design) | ✅ Done |
+| 8. Staging layer | 8 views in `sql/staging/`, with tests | ✅ Done |
+| 9. Mart layer | 4 dimensions and 2 fact tables in `sql/marts/`, with tests | ✅ Done |
+| 10. Pipeline automation | One command to rebuild all layers and run tests | ⏳ In progress |
+| 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ⏳ Next |
+| 12. Dashboard | Power BI executive dashboard | ⏳ Planned |
+| 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
 
-## 4. Repository structure
+## 5. Documentation
+
+| Document | Contents |
+|---|---|
+| [01 Problem statement](docs/01_problem_statement.md) | Business questions, hypotheses, definitions |
+| [02 Data quality findings](docs/02_data_quality_findings.md) | Profiling results and decision log |
+| [03 Data model](docs/03_data_model.md) | Star schema design |
+| [04 ETL pipeline](docs/04_etl_pipeline.md) | Layers, data quality controls, how to run |
+
+## 6. Repository structure
 
 ```
 olist-commercial-analytics/
-├── docs/          # problem statement, data quality findings, data model
+├── docs/          # problem statement, data quality, data model, ETL pipeline
 ├── sql/           # data profiling queries
-├── src/           # Python ETL (load_raw.py)
+│   ├── staging/   # staging views
+│   └── marts/     # star schema tables
+├── src/           # Python loader (load_raw.py)
+├── tests/         # data quality and reconciliation tests
 ├── notebooks/     # analysis (coming)
-├── tests/         # data checks (coming)
 ├── dashboard/     # Power BI file (coming)
 ├── deck/          # presentation (coming)
 ├── requirements.txt
 └── README.md
 ```
 
-## 5. How to run
+## 7. How to run
 
 1. Clone this repo and create a virtual environment:
-   ```
+```
    py -m venv .venv
    .venv\Scripts\activate
    pip install -r requirements.txt
-   ```
+```
 2. Download the dataset from the Kaggle link above and place the 9 CSV files in `data/raw/`.
 3. Create a `.env` file with your PostgreSQL connection details (not included in the repo).
 4. Load the raw data (with the virtual environment active): `py src/load_raw.py`
-5. Run the profiling queries in `sql/` in numbered order.
+5. Build the staging views: run the files in `sql/staging/`.
+6. Build the star schema: run `sql/marts/dim_*.sql`, then `fact_order_items.sql`, then `fact_orders.sql`.
+7. Check the results: run the test files in `tests/`.
 
-## 6. Tools
+Steps 4–7 are being automated into a single command.
 
-Python (pandas) · PostgreSQL · SQL · Power BI · Git & GitHub
+## 8. Tools
+
+Python (pandas, SQLAlchemy) · PostgreSQL · SQL · Power BI · Git & GitHub
 
 ---
 
