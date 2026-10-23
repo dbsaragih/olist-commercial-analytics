@@ -55,6 +55,7 @@ def main():
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS raw"))
 
     print(f"{'table':<22}{'csv rows':>12}{'db rows':>12}  check")
+    mismatches = []
     for file_name, table in TABLES.items():
         # Read the CSV with every column as text
         df = pd.read_csv(RAW_DIR / file_name, dtype=str)
@@ -70,7 +71,11 @@ def main():
             ).scalar_one()
         status = "OK" if db_rows == len(df) else "MISMATCH"
         print(f"{table:<22}{len(df):>12,}{db_rows:>12,}  {status}")
+        if status == "MISMATCH":
+            mismatches.append(table)
 
+    if mismatches:
+        raise RuntimeError(f"Row count mismatch in: {', '.join(mismatches)}")        
 
 if __name__ == "__main__":
     main()
