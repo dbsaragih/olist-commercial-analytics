@@ -2,8 +2,7 @@
 
 **End-to-end analytics project on the Olist Brazilian e-commerce dataset: from raw data to business recommendations.**
 
-> **Status: in progress.** Data foundation and ETL pipeline complete: raw load, profiling, data quality review, and a tested star schema in PostgreSQL. Pipeline automation, analysis, dashboard and recommendations are next.
-
+> **Status: in progress.** Data foundation and automated ETL pipeline complete: one command rebuilds a tested star schema in PostgreSQL. Analysis, dashboard and recommendations are next.
 ---
 
 ## 1. Business context
@@ -39,7 +38,7 @@ A reproducible ETL pipeline (ELT pattern) loads 1.55 million rows from 9 source 
 | `staging` | 8 views: correct types, consistent names, data-quality flags | `sql/staging/` |
 | `mart` | Star schema: 4 dimensions, 2 fact tables, enforced primary and foreign keys | `sql/marts/` |
 
-Every step is scripted and rerunnable, and each layer is checked with reconciliation tests (`tests/`) against independently verified numbers.
+One command (`py run_pipeline.py`) rebuilds every layer in dependency order and runs 26 automated checks against independently verified numbers, stopping with a clear message if any step or check fails.
 Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 
 ## 4. Progress
@@ -55,7 +54,7 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | 7. Data model | [docs/03_data_model.md](docs/03_data_model.md) (star schema design) | ✅ Done |
 | 8. Staging layer | 8 views in `sql/staging/`, with tests | ✅ Done |
 | 9. Mart layer | 4 dimensions and 2 fact tables in `sql/marts/`, with tests | ✅ Done |
-| 10. Pipeline automation | One command to rebuild all layers and run tests | ⏳ In progress |
+| 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 26 checks | ✅ Done |
 | 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ⏳ Next |
 | 12. Dashboard | Power BI executive dashboard | ⏳ Planned |
 | 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
@@ -85,23 +84,13 @@ olist-commercial-analytics/
 ├── requirements.txt
 └── README.md
 ```
-
 ## 7. How to run
 
-1. Clone this repo and create a virtual environment:
-```
-   py -m venv .venv
-   .venv\Scripts\activate
-   pip install -r requirements.txt
-```
+1. Clone this repo and create a virtual environment: run `py -m venv .venv`, then `.venv\Scripts\activate`, then `pip install -r requirements.txt`.
 2. Download the dataset from the Kaggle link above and place the 9 CSV files in `data/raw/`.
 3. Create a `.env` file with your PostgreSQL connection details (not included in the repo).
-4. Load the raw data (with the virtual environment active): `py src/load_raw.py`
-5. Build the staging views: run the files in `sql/staging/`.
-6. Build the star schema: run `sql/marts/dim_*.sql`, then `fact_order_items.sql`, then `fact_orders.sql`.
-7. Check the results: run the test files in `tests/`.
-
-Steps 4–7 are being automated into a single command.
+4. Run the pipeline with the virtual environment active: `py run_pipeline.py`. This loads the raw data, builds the staging views and the star schema, and runs 26 automated checks. It ends with `PIPELINE OK`, or names the step or check that failed.
+5. To rebuild only the SQL layers after changing a query, run `py run_pipeline.py --skip-load`.
 
 ## 8. Tools
 
