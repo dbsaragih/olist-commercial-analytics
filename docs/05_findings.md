@@ -137,4 +137,49 @@ testing.
 **Notes:** 92% of orders arrive before the promised date (64% by 10+ days), so
 the promise is conservative; whether it suppresses conversion cannot be tested
 with this data. Scope excludes 8 delivered orders without a date (T3); the leg
-analysis also excludes T4 and T5. Ratings cover 95,560 reviewed orders.  
+analysis also excludes T4 and T5. Ratings cover 95,560 reviewed orders.
+
+## BQ4. Seller concentration
+
+**Olist runs on a core of about 300 sellers: the top 10% generate two-thirds of
+GMV, but no single seller is critical, and half of all sellers are effectively
+dormant.**
+
+| Seller GMV band (Jan 2017 – Aug 2018) | Sellers | Share of sellers | Share of GMV |
+|---|---|---|---|
+| R$ 50k and over | 38 | 1.3% | 29.1% |
+| R$ 10k–50k | 244 | 8.3% | 37.0% |
+| R$ 1k–10k | 1,102 | 37.4% | 29.9% |
+| Under R$ 1k | 1,561 | 53.0% | 4.0% |
+| **Total** | **2,945** | **100%** | **R$ 13.18M** |
+
+- **Concentrated as a group:** the top 10% (295 sellers) generate 67.0% of GMV
+  and the top 20% generate 82.2%; the bottom 50% generate 3.3%.
+- **Not dependent on individuals:** the top 10 sellers hold 13.3% (about 1.3%
+  each); the HHI of 36 is equivalent to 275 equal-sized sellers, close to the
+  size of the top decile.
+- **Mid-sized sellers are the backbone:** the R$ 10k–50k band produces more GMV
+  (37.0%) than the 38 largest sellers (29.1%).
+- **A dormant tail:** 53% of sellers made under R$ 1k in 20 months, and 494
+  (17%) sold only once.
+- **Growth came from more sellers:** active sellers doubled from 1,153 to 2,330
+  (Jan–Aug, like-for-like); 72% of the GMV increase came from more sellers,
+  14% from higher GMV per seller and 14% from both. Concentration was stable
+  (top-decile share 62.1% → 63.4%), so new sellers mostly joined the tail.
+- **Service does not depend on seller size:** late delivery is 5–7% in every
+  decile (item-weighted). Small sellers hand over late more often (18.4% in the
+  bottom decile vs 8.8% in the top), but the delivery buffer absorbs it.
+
+| Hypothesis | Verdict |
+|---|---|
+| The top 10% of sellers generate more than 60% of GMV | Supported (67.0%); concentration sits in a group, not in individual sellers |
+
+**Implication:** manage the top ~300 sellers as key accounts, since losing the
+largest one would cost about 1–2% of GMV. The bigger opportunity is moving
+sellers up a band: activating the dormant half and helping R$ 1k–10k sellers
+reach R$ 10k–50k. Onboarding quality matters more than onboarding volume, given
+that 17% of sellers sold only once.
+
+**Notes:** decile counts differ by one seller because 2,945 does not divide by
+10. Service rates join item-level sellers to order-level outcomes and are
+item-weighted. Deciles 7–10 rest on small item counts.
