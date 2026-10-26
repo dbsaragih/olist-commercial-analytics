@@ -82,7 +82,7 @@ dimension and connect through the conformed dimensions.
 | Dimension | Key | Main attributes |
 |---|---|---|
 | `dim_date` | date_key | date, year, quarter, month, year-month, weekday, in_analysis_period |
-| `dim_customer` | customer_unique_id | city, state, region, first_order_date, orders_count, is_repeat_customer |
+| `dim_customer` | customer_unique_id | city, state, region, first_order_date, orders_all, delivered_orders_in_period, is_repeat_customer |
 | `dim_product` | product_id | category (Portuguese and English), weight, dimensions |
 | `dim_seller` | seller_id | city, state, region |
 
@@ -96,4 +96,5 @@ dimension and connect through the conformed dimensions.
 | Region stored as a dimension attribute | Avoids a snowflake; simpler for Power BI |
 | Exclusions stored as flags, not deleted rows | Keeps data complete; each analysis filters as needed; allows with/without sensitivity checks |
 | Payments not modelled | GMV uses item prices; payments were a reconciliation check only |
-| Delivery state and region also stored on `fact_order_items` | BQ5 analyses freight by category and region at item level; copying the order's delivery location avoids joining the two fact tables | `dim_date` used twice by `fact_orders` (purchase and delivered date) | Role-playing dimension: one date table, two relationships; in Power BI the delivered-date relationship is inactive and used via USERELATIONSHIP |
+| Delivery state and region also stored on `fact_order_items` | BQ5 analyses freight by category and region at item level; copying the order's delivery location avoids joining the two fact tables
+| `dim_date` used twice by `fact_orders` (purchase and delivered date) | Role-playing dimension: one date table, two relationships; in Power BI the delivered-date relationship is inactive and used via USERELATIONSHIP |
