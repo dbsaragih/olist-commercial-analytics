@@ -39,3 +39,51 @@ renewed acquisition. BQ2 tests whether repeat purchases offer a third lever.
 **Checks:** the category view and the order view of growth reconcile to
 R$ 0.00 (R$ 4,224,668.99 in both); monthly totals reconcile with the fact
 tables (96,211 orders, R$ 13.18M).
+
+## BQ2. Customer repeat and retention
+
+**Olist is almost entirely a one-purchase marketplace: about 2 in 100 customers
+come back within six months, so growth depends on acquiring new buyers.**
+
+| Measure | Result |
+|---|---|
+| Customers with a delivered order (Jan 2017 – Aug 2018) | 93,104 |
+| Placed more than one order | 3.00% (2,789) |
+| Of which, same-day orders only | 784 (28% of multi-order customers) |
+| Returned on a later date | 2.15% (2,005) |
+| Returned within 90 days (eligible customers) | 1.30% (981 of 75,448) |
+| Returned within 180 days (eligible customers) | 1.98% (1,112 of 56,194) |
+
+- **Real returns are lower than the headline:** 28% of multi-order customers
+  only ordered on the same day; counting them would overstate retention by 40%.
+- **No improvement with scale:** the 90-day return rate was 1.52% for the
+  May–Sep 2017 cohorts and 1.25% for the larger Jan–May 2018 cohorts (about
+  6,600 new customers a month). The cause is untested; one hypothesis is lower
+  loyalty among customers acquired at scale.
+- **Frequency, not spend:** returners generate 4.13% of GMV, about twice their
+  2.15% share of customers, because they place about 2.1 orders each. Their GMV
+  per order (R$ 126.52) is lower than one-time buyers' (R$ 137.91).
+- **Timing:** among observed returners, 30% came back within 30 days and the
+  median gap was 74 days (understated: recent cohorts can only show short gaps).
+
+| Hypothesis | Verdict |
+|---|---|
+| Fewer than 5% of customers repeat | Supported under every definition (3.00% / 2.15% / 1.98% within 180 days) |
+
+**Implication:** retention cannot replace acquisition as a growth engine in the
+near term. As a scenario, raising the 90-day return rate from 1.30% to 3% would
+add about R$ 200k (about 1.5% of GMV). A low-cost reactivation contact within
+30–90 days of the first purchase is worth testing, but the 2018 stall (BQ1) has
+to be solved through acquisition. BQ3 tests whether a late first delivery
+reduces the chance of returning.
+
+**Notes and scope decisions:**
+- Fixed-window rates only use cohorts whose full window ends by 2018-08-31;
+  incomplete cohorts are shown as NULL, not zero.
+- Jan–Feb 2017 cohorts are too small to interpret (about 6 and 15 returners).
+- "Categories bought on return" was not analysed: 2,005 returners spread across
+  74 categories give groups too small to support a decision.
+- Checks: customer count (93,104), orders (96,211) and GMV (R$ 13,181,027.13)
+  reconcile with the fact tables; Q2a vs Q2b eligibility differences
+  (+316 and +927 customers) are explained by customer-level vs month-level
+  eligibility.
