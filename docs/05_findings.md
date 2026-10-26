@@ -3,6 +3,58 @@
 Findings for each business question, in pyramid style. Queries: `sql/analysis/`.
 Scope: delivered orders; GMV = item price excluding freight, in BRL.
 
+## Executive summary
+
+**Olist’s growth came from acquiring customers and sellers, not from bigger baskets or repeat buying, and it stalled in 2018. Because only 2% of customers come back, the next phase has to come from two levers: larger baskets, and a Northeast served by local sellers and reliable carriers.**
+
+**Situation.** Between January–August 2017 and January–August 2018, GMV grew
+141%, from R$ 2.99M to R$ 7.22M.
+
+**Complication.** That growth came almost entirely from volume: 99% from more
+orders and 72% from more sellers, while the average order stayed at about
+R$ 136. Monthly GMV has been flat at about R$ 0.9M since early 2018, and
+year-on-year growth fell from +727% in January to +51% in August. Only 2% of
+customers return within six months, so there is no repeat base to cushion the
+slowdown.
+
+**What the data shows:**
+
+1. **Retention cannot carry growth in the near term.** 1.98% of customers
+   return within 180 days, and returners generate 4% of GMV. Even raising the
+   90-day return rate from 1.3% to 3% would add about R$ 200k (scenario).
+2. **The basket is the untapped lever.** Customers buy about 1.14 items per
+   order, unchanged in two years. Freight takes 32% of what customers pay for
+   items under R$ 50 but 7% for items over R$ 200, so small baskets are also
+   the ones most penalised by shipping.
+3. **The Northeast is underserved on every measure.** It has the highest late
+   rate (12.8%, twice the Southeast), the lowest rating (3.97), and pays 1.9×
+   more freight per item, because about 84% of its items are shipped from the
+   Southeast.
+4. **Delivery problems come from carriers, not sellers.** Late orders are 7% of
+   orders but a third of all 1–2 star reviews; 87% of their extra delivery time
+   is carrier transit, and late rates are the same for large and small sellers.
+5. **The seller base is concentrated in a core and dormant in the tail.**
+   About 300 sellers (10%) generate 67% of GMV, but no single seller is
+   critical; 53% of sellers made under R$ 1k in 20 months.
+
+**Recommendations:**
+
+| # | Lever | First step | Size (indicative) |
+|---|---|---|---|
+| 1 | Grow basket size | Test a free-shipping threshold and bundle offers on low-price categories | +0.1 items per order ≈ R$ 0.6M over 8 months (≈ 9% of GMV, scenario) |
+| 2 | Recruit Northeast sellers | Target seller acquisition in the Northeast to shorten the longest, least reliable lanes | Addresses 18% of late orders and the highest freight burden |
+| 3 | Manage carrier performance by lane | Set lane-level targets for Northeast lanes (rate) and Rio de Janeiro (volume); set delivery promises on the variability of transit, not the average | About 600 fewer late orders (Northeast to Southeast level) plus about 660 (Southeast −1 point) |
+| 4 | Activate the seller tail | Onboarding support for sellers who made only one sale (17% of sellers) | Moves sellers into the R$ 10k–50k band, which already produces 37% of GMV |
+| 5 | Low-cost reactivation | One contact 30–90 days after a first purchase; measure, don't scale yet | Up to about 1.5% of GMV (scenario) |
+
+**Limitations.** The data is observational: links such as late delivery and low
+ratings are associations, not proven causes. GMV is revenue, not profit; no cost,
+margin, marketing or conversion data was available. The data ends in August
+2018, so the most recent months are slightly understated by orders still in
+transit. Scenario figures illustrate scale and are not forecasts.
+
+---
+
 ## BQ1. Growth drivers
 
 **Olist's growth came entirely from more orders, spread across many categories,
