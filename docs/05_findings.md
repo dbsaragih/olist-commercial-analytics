@@ -87,3 +87,54 @@ reduces the chance of returning.
   reconcile with the fact tables; Q2a vs Q2b eligibility differences
   (+316 and +927 customers) are explained by customer-level vs month-level
   eligibility.
+
+## BQ3. Delivery performance and customer ratings
+
+**Late delivery is the clearest driver of bad reviews, and the carrier leg causes
+it: late orders are 7% of orders but a third of all 1–2 star reviews, and 87% of
+their extra delivery time is spent in carrier transit.**
+
+| Measure | On time | Late |
+|---|---|---|
+| Delivered orders | 89,672 (93.2%) | 6,531 (6.8%) |
+| Average review score | 4.29 | 2.27 |
+| Low scores (1–2 stars) | 9.2% | 62.4% |
+| Average seller handover | 3.0 days | 6.0 days |
+| Average carrier transit | 7.9 days | 27.9 days |
+
+- **Damage starts on the first day late:** the low-score rate rises from 12.4%
+  (delivered on the estimated day) to 32.1% at 1–3 days late and 67.7% at
+  4–7 days late, then levels off at about 80%. Arriving early earns little:
+  10+ days early scores only 0.29 higher than on the day.
+- **The carrier leg causes the delay:** of the 23 extra days for late orders,
+  20 are carrier transit (87%) and 3 are seller handover (13%). Late seller
+  handover is a contributing trigger (27.8% of late orders vs 7.6% on time).
+- **Two geographic problems, not one:** the Northeast has the highest late rate
+  (12.8%, twice the Southeast's 6.1%) and the lowest score (3.97); the Southeast
+  holds 62% of all late orders because of its volume (RJ alone about 23%).
+- **Remote is not the same as late:** the North has the longest transit
+  (19.2 days) but arrives 15.5 days before the promise on average. The Northeast
+  has a similar buffer to the Southeast but twice the late rate, which points to
+  more variable transit times rather than longer ones.
+- **Weak link to retention:** customers whose first order was late returned
+  within 180 days at 1.57% vs 2.01% (62 vs 1,050 customers; about 2 standard
+  errors). Directionally consistent, but commercially immaterial (about 17
+  customers).
+
+| Hypothesis | Verdict |
+|---|---|
+| Late orders score at least 1.5 stars lower | Supported (2.02 lower) |
+| Carrier transit drives lateness | Supported (87% of the extra days) |
+| Lateness is concentrated in remote states | Partly rejected: highest rates in the Northeast, not the North; 62% of late orders in the Southeast |
+
+**Implication:** two carrier levers of similar size: bringing Northeast lanes to
+the Southeast's late rate (about 600 fewer late orders) and cutting the
+Southeast's rate by one point (about 660). Delivery promises should be set on
+the variability of transit by region, not the average. Because damage starts on
+day 1, proactive contact when an order is about to miss its date is worth
+testing.
+
+**Notes:** 92% of orders arrive before the promised date (64% by 10+ days), so
+the promise is conservative; whether it suppresses conversion cannot be tested
+with this data. Scope excludes 8 delivered orders without a date (T3); the leg
+analysis also excludes T4 and T5. Ratings cover 95,560 reviewed orders.  
