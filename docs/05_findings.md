@@ -183,3 +183,51 @@ that 17% of sellers sold only once.
 **Notes:** decile counts differ by one seller because 2,945 does not divide by
 10. Service rates join item-level sellers to order-level outcomes and are
 item-weighted. Deciles 7–10 rest on small item counts.
+
+## BQ5. Freight cost by region
+
+**Freight takes 14% of what customers pay overall and 18–19% in the North and
+Northeast, below the 25% hypothesised; but for the typical North order it
+exceeds 25%, and cheap items carry far more of the burden than distance does.**
+
+| Customer region | Freight share (ratio of sums) | Median order | Orders over 25% | Freight per item |
+|---|---|---|---|---|
+| North | 18.5% | 26.3% | 52.9% | R$ 36.82 |
+| Northeast | 17.9% | 23.9% | 46.9% | R$ 32.26 |
+| Center-West | 15.0% | 20.1% | 35.7% | R$ 22.99 |
+| South | 15.0% | 20.1% | 34.7% | R$ 21.19 |
+| Southeast | 13.2% | 17.1% | 26.1% | R$ 17.34 |
+| **Total** | **14.3%** | **18.3%** | **30.3%** | **R$ 19.95** |
+
+- **Two views, two answers:** as a share of revenue, freight is 18.5% (North)
+  and 17.9% (Northeast). For the customer, the median North order pays 26.3%
+  freight, and about half of North and Northeast orders exceed 25%.
+- **The averaging trap:** averaging item-level ratios would give 28.6% (North)
+  and 26.7% (Northeast) and wrongly confirm the hypothesis; overall it
+  overstates freight share by 7 points (21.3% vs 14.3%).
+- **The share understates the regional burden:** North customers buy pricier
+  items (R$ 162 vs R$ 114 in the Southeast), which lowers their share, yet pay
+  2.1× more freight per item.
+- **Price matters more than distance:** within every price band the North and
+  Northeast pay the highest share, so the gap is real; but the spread across
+  price bands (32% under R$ 50 vs 7% over R$ 200) is twice the spread across
+  regions.
+- **Supply is far from demand:** about 84% of items delivered to the North and
+  Northeast are shipped from the Southeast, at R$ 31–36 per item vs R$ 16 within
+  the Southeast.
+
+| Hypothesis | Verdict |
+|---|---|
+| Freight exceeds 25% of order value in the North and Northeast | Rejected as a regional aggregate (18.5% / 17.9%); supported for the typical North order (median 26.3%) and borderline in the Northeast (23.9%) |
+
+**Implication:** the strongest freight lever is basket size, since one freight
+charge spread over more items cuts the share most for cheap items; a
+free-shipping threshold or bundle offers would test this, and it is the same
+lever identified in BQ1. The structural lever is recruiting sellers in the
+Northeast, which would shorten the longest and least reliable lanes (BQ3) while
+growing the seller base (BQ4).
+
+**Notes:** freight share = freight ÷ (item price + freight). Regional figures
+use the ratio of sums; the average of item ratios is shown only to demonstrate
+the error. Lane shares cover lanes with at least 100 items. Item counts for the
+84% estimate are derived from GMV ÷ average item price.
