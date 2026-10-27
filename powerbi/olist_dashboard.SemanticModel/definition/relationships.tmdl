@@ -1,0 +1,43 @@
+relationship 9da8f1dc-246d-455c-8d80-19924a43f942
+	fromColumn: 'Order Items'.customer_unique_id
+	toColumn: Customer.customer_unique_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5988ce25-8af5-4b33-be6f-690b85d37bd5
+	fromColumn: 'Order Items'.purchase_date_key
+	toColumn: Date.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 3351c55a-d30b-4a45-a5b5-b94b6b6a1b22
+	fromColumn: 'Order Items'.product_id
+	toColumn: Product.product_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship a0b88469-f8ca-4764-9063-fee1478e86e5
+	fromColumn: 'Order Items'.seller_id
+	toColumn: Seller.seller_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 6fc70074-9d8f-45d9-85a4-820f34565c3b
+	fromColumn: Orders.customer_unique_id
+	toColumn: Customer.customer_unique_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 994b1bca-9b62-475e-9d27-8b1c7daa59a4
+	isActive: false
+	fromColumn: Orders.delivered_date_key
+	toColumn: Date.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 1735f9ce-a2e6-4081-aad2-8a3805e6838f
+	fromColumn: Orders.purchase_date_key
+	toColumn: Date.date_key
+
+	annotation PBI_IsFromSource = FS
+

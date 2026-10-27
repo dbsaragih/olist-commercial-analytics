@@ -1,0 +1,133 @@
+table Date
+	lineageTag: cc8c689e-ccad-4d66-b4e0-33905ac2bc0f
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ed02e26-9243-4fab-abcf-cfa65c2a8c87
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = User
+
+	column full_date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: c1ff5cac-7d62-46b2-aaba-fc88ce869771
+		summarizeBy: none
+		sourceColumn: full_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: bb896d6b-e8d1-45e1-81ae-e55cf16dd1fe
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 0440135f-fdc2-403d-8c1d-856d5fae7cb9
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: c3c8cff1-3d69-4e81-92a3-ae8444b0d7ad
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = User
+
+	column month_short
+		dataType: string
+		lineageTag: d2100942-bbea-4512-82f8-1850a36c40b1
+		summarizeBy: none
+		sourceColumn: month_short
+		sortByColumn: month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: cf29e72b-04f5-462d-a9be-45e2c039fd31
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e8e04d81-884b-4d54-ac2a-cdfceb5276f9
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column weekday_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 99d35372-ec06-4d99-8c0d-15fd56198194
+		summarizeBy: sum
+		sourceColumn: weekday_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_short
+		dataType: string
+		lineageTag: 4b44dbf2-d957-48c9-9143-41254d147016
+		summarizeBy: none
+		sourceColumn: weekday_short
+		sortByColumn: weekday_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 05f221b9-555d-4f16-9f17-9f2faf056668
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column in_analysis_period
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f6de2a31-12d2-44ab-afc8-aa150ff598b6
+		summarizeBy: none
+		sourceColumn: in_analysis_period
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "olist"),
+				    mart_dim_date = Source{[Schema="mart",Item="dim_date"]}[Data]
+				in
+				    mart_dim_date
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

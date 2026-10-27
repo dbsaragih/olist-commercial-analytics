@@ -1,0 +1,220 @@
+table Orders
+	lineageTag: b5b77418-080b-45d8-8e90-7522ff4e1463
+
+	column order_id
+		dataType: string
+		lineageTag: ba01f3d4-a2cf-476b-986f-ffb0607bf6a7
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 612614be-7df2-4ceb-b2fa-ed1f56b560e8
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 63164c0f-10b3-4d28-9342-9c36312992a6
+		summarizeBy: none
+		sourceColumn: purchase_date_key
+
+		annotation SummarizationSetBy = User
+
+	column delivered_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: baf0e313-cac0-4f6f-91e7-eab9b86b9f74
+		summarizeBy: none
+		sourceColumn: delivered_date_key
+
+		annotation SummarizationSetBy = User
+
+	column order_status
+		dataType: string
+		lineageTag: 17278064-83c3-4fca-856b-349ed7d6b634
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_delivered
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dbc876fe-9cf8-40f2-b737-de4ffc4e07d4
+		summarizeBy: none
+		sourceColumn: is_delivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column in_analysis_period
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 02511eed-d9c1-4bed-93bd-c278b6fffb46
+		summarizeBy: none
+		sourceColumn: in_analysis_period
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_state
+		dataType: string
+		lineageTag: 45807f45-618c-4381-be9e-2b034e2b2e62
+		summarizeBy: none
+		sourceColumn: delivery_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_region
+		dataType: string
+		lineageTag: 85244307-3077-4540-8ca3-40f9f37817ce
+		summarizeBy: none
+		sourceColumn: delivery_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column items_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e4b3102-e765-48e5-a3c0-6d0b7a9780a0
+		summarizeBy: sum
+		sourceColumn: items_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_gmv
+		dataType: double
+		lineageTag: 2273355f-af32-40a2-8f92-398468af5096
+		summarizeBy: sum
+		sourceColumn: order_gmv
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column order_freight
+		dataType: double
+		lineageTag: 10b8caec-32fe-40bf-987a-b7d1036d2993
+		summarizeBy: sum
+		sourceColumn: order_freight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivery_days
+		dataType: int64
+		formatString: 0
+		lineageTag: da8dc84e-71a8-4c30-b40a-6d0ed5489959
+		summarizeBy: sum
+		sourceColumn: delivery_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_vs_estimate
+		dataType: int64
+		formatString: 0
+		lineageTag: fbc078cf-d5c7-4269-ae56-0f8de1531e1d
+		summarizeBy: sum
+		sourceColumn: days_vs_estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_late
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 887a595e-1576-4e16-856e-f32ac639c255
+		summarizeBy: none
+		sourceColumn: is_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_handover_days
+		dataType: int64
+		formatString: 0
+		lineageTag: ac32c443-2dae-4b64-81a3-4b5eebfa2f8e
+		summarizeBy: sum
+		sourceColumn: seller_handover_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier_transit_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 52480496-a4a8-4690-994d-033220a0f062
+		summarizeBy: sum
+		sourceColumn: carrier_transit_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_handover_late
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 55985890-83ec-4380-8321-1f4b77af1f91
+		summarizeBy: none
+		sourceColumn: is_handover_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e1a734d-5830-423b-a3ec-d92409816f60
+		summarizeBy: sum
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_review
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 83a7ddf3-26ea-4e70-9079-93c365dc9f45
+		summarizeBy: none
+		sourceColumn: has_review
+
+		annotation SummarizationSetBy = Automatic
+
+	column excl_delivery_time
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 95fb3e60-62d1-494e-9992-f9178d7c0737
+		summarizeBy: none
+		sourceColumn: excl_delivery_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column excl_carrier_leg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1382b00c-7672-4035-8efe-420e422f7bca
+		summarizeBy: none
+		sourceColumn: excl_carrier_leg
+
+		annotation SummarizationSetBy = Automatic
+
+	column excl_handover
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 640f7281-482c-4e76-8fb6-d4f8e5ec2f03
+		summarizeBy: none
+		sourceColumn: excl_handover
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "olist"),
+				    mart_fact_orders = Source{[Schema="mart",Item="fact_orders"]}[Data]
+				in
+				    mart_fact_orders
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,68 @@
+table Seller
+	lineageTag: f6c636e1-a107-44b1-aad3-f20ed2f2ce69
+
+	column seller_id
+		dataType: string
+		lineageTag: 5e1c7d92-2013-4ef0-946b-7ef10941106f
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code_prefix
+		dataType: string
+		lineageTag: eca49551-6add-4d01-b5fb-8ab97dc0200f
+		summarizeBy: none
+		sourceColumn: zip_code_prefix
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 5e8c1297-307d-4c5c-b3ad-5d49b13f5d2d
+		summarizeBy: none
+		sourceColumn: city
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: d6a02476-a9b3-4215-ac57-b068a2cdd08b
+		summarizeBy: none
+		sourceColumn: state
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: b7acfa64-c167-47b5-9d6a-d56c9dfa31dd
+		summarizeBy: none
+		sourceColumn: region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Seller = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "olist"),
+				    mart_dim_seller = Source{[Schema="mart",Item="dim_seller"]}[Data]
+				in
+				    mart_dim_seller
+
+	changedProperty = Name
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

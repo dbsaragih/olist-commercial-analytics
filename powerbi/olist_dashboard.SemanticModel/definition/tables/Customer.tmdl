@@ -1,0 +1,105 @@
+table Customer
+	lineageTag: 249a114e-17e7-47d1-95fd-8e6f7b3c3cce
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 7b36ea2f-2e36-4490-9117-02cb96f65a73
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code_prefix
+		dataType: string
+		lineageTag: ac37ef96-13e7-438f-8c92-5adb09c7b14d
+		summarizeBy: none
+		sourceColumn: zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 4a119d36-f05c-4d2d-bdba-c5baadebf454
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 74e1da18-969a-4050-8ea2-df5ded004b3d
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 40296077-3b11-40ab-adee-b9aba183b693
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cc4a952c-5c12-49b7-8c7d-d7cc538d6683
+		summarizeBy: none
+		sourceColumn: first_order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c27e33e7-cde4-467b-a67d-9959240c2cc0
+		summarizeBy: none
+		sourceColumn: last_order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column orders_all
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b16bfb5-95d2-4348-861c-4017da3750f1
+		summarizeBy: sum
+		sourceColumn: orders_all
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivered_orders_in_period
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c30df96-4a1b-4f05-a8f4-88539014b1bf
+		summarizeBy: sum
+		sourceColumn: delivered_orders_in_period
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_repeat_customer
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9509a5ad-1db4-413c-9bac-60cd01d2e502
+		summarizeBy: none
+		sourceColumn: is_repeat_customer
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customer = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "olist"),
+				    mart_dim_customer = Source{[Schema="mart",Item="dim_customer"]}[Data]
+				in
+				    mart_dim_customer
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,64 @@
+table _Measures
+	lineageTag: cb5d3adb-b403-4f18-9c2e-66081bc0a41f
+
+	measure GMV = CALCULATE ( SUM ( 'Order Items'[price] ), 'Order Items'[is_delivered] = TRUE () )
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 032956fc-bcdb-48ae-9499-07130afbaed2
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Freight =
+			
+			CALCULATE ( SUM ( 'Order Items'[freight_value] ), 'Order Items'[is_delivered] = TRUE () )
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 8caa7315-3e77-4924-ab26-e212e724897c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Delivered Orders' =
+			
+			CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE () )
+		formatString: #,0
+		lineageTag: fc8d7d36-2e31-486b-a780-3954922c6df6
+
+	measure Customers =
+			
+			CALCULATE ( DISTINCTCOUNT ( Orders[customer_unique_id] ), Orders[is_delivered] = TRUE () )
+		formatString: #,0
+		lineageTag: c862aab8-9513-46ae-ba6a-895eb3865ee6
+
+	measure AOV =
+			
+			DIVIDE ( [GMV], [Delivered Orders] )
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 20922ef0-4eab-416c-b2f9-ca30c552f0d1
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Freight Share' =
+			
+			DIVIDE ( [Freight], [GMV] + [Freight] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3a9f3ad8-285b-4b80-a9b9-3ecce10b80d2
+
+	measure 'Late Rate' =
+			
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[is_late] = TRUE () ),
+			    CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[excl_delivery_time] = FALSE () )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5edf4021-902e-4444-bf76-d09175b97791
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
