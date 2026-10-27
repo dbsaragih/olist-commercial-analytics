@@ -20,7 +20,8 @@ slowdown.
 **What the data shows:**
 
 1. **Retention cannot carry growth in the near term.** 1.98% of customers
-   return within 180 days, and returners generate 4% of GMV. Even raising the
+   return within 180 days, and a customer's 12-month GMV is only 3.5% above
+   their first order, so acquisition has to pay back on the first purchase. Even raising the
    90-day return rate from 1.3% to 3% would add about R$ 200k (scenario).
 2. **The basket is the untapped lever.** Customers buy about 1.14 items per
    order, unchanged in two years. Freight takes 32% of what customers pay for
@@ -45,7 +46,7 @@ slowdown.
 | 2 | Recruit Northeast sellers | Target seller acquisition in the Northeast to shorten the longest, least reliable lanes | Addresses 18% of late orders and the highest freight burden |
 | 3 | Manage carrier performance by lane | Set lane-level targets for Northeast lanes (rate) and Rio de Janeiro (volume); set delivery promises on the variability of transit, not the average | About 600 fewer late orders (Northeast to Southeast level) plus about 660 (Southeast −1 point) |
 | 4 | Activate the seller tail | Onboarding support for sellers who made only one sale (17% of sellers) | Moves sellers into the R$ 10k–50k band, which already produces 37% of GMV |
-| 5 | Low-cost reactivation | One contact 30–90 days after a first purchase; measure, don't scale yet | Up to about 1.5% of GMV (scenario) |
+| 5 | Low-cost reactivation | One contact 30–90 days after a high-value first purchase; measure, don't scale yet | Up to about 1.5% of GMV (scenario) |
 
 **Limitations.** The data is observational: links such as late delivery and low
 ratings are associations, not proven causes. GMV is revenue, not profit; no cost,
@@ -283,3 +284,50 @@ growing the seller base (BQ4).
 use the ratio of sums; the average of item ratios is shown only to demonstrate
 the error. Lane shares cover lanes with at least 100 items. Item counts for the
 84% estimate are derived from GMV ÷ average item price.
+
+## Customer value: RFM segmentation and CLV (Python)
+
+Notebook: `notebooks/01_rfm_clv.ipynb`
+
+**A customer is worth their first order: 12-month GMV is only 3.5% above the
+first purchase, so acquisition must pay back on the first order, and
+reactivation should target recent high-value buyers, not lapsed ones.**
+
+| Window after first purchase | Eligible customers | GMV per customer | Uplift vs first day |
+|---|---|---|---|
+| First day | 93,104 | R$ 138.53 | — |
+| 90 days | 75,448 | R$ 140.53 | +1.3% |
+| 180 days | 56,194 | R$ 139.83 | +2.0% |
+| 365 days | 21,404 | R$ 142.96 | +3.5% |
+
+- **Value arrives on day one:** 96.6% of a customer's 12-month GMV comes from
+  the first purchase day. Break-even acquisition cost is therefore Olist's
+  margin on a single order of about R$ 143 (for example about R$ 14 at an
+  illustrative 10% contribution margin).
+- **Value is concentrated among one-time buyers:** the top 40% by spend (38% of
+  customers) generate 72% of GMV; repeat buyers generate 4%.
+- **A high-value one-time buyer is worth as much as a repeat buyer:** R$ 268 in
+  one order vs R$ 266–276 across two or more.
+- **RFM reduces to value × customer age:** frequency carries almost no
+  information (98% buy once), and for one-time buyers recency measures how long
+  ago they were acquired, not churn.
+- **Reactivation target:** high-value recent buyers (14,499 customers, last
+  purchase about 94 days ago) and, going forward, every high-value buyer 30–90
+  days after the first purchase, when 55% of returns happen (BQ2). Lapsed
+  high-value buyers (about 336 days) are past that window.
+
+**Implication:** acquisition spend must be judged on first-order economics, not
+on future repeat value. This reinforces the executive summary: retention is not
+a growth lever, and basket size (the value of the first order) is.
+
+**Notes:**
+- Frequency counts distinct purchase days (same-day orders = one occasion).
+  Recency is measured as at 2018-09-01.
+- R scores split customers 40% recent / 60% older by design, so "lapsed"
+  segments are larger by construction; GMV per customer is the same
+  (R$ 268 vs R$ 269).
+- Revenue CLV only: no commission, margin or cost data. The 365-day figure
+  covers only 2017 cohorts; 2018 cohorts return less (BQ2), so it is an upper
+  bound for current customers.
+- Cross-method check: repeat-buyer GMV in Python (R$ 544,289.32) equals the SQL
+  result in BQ2.
