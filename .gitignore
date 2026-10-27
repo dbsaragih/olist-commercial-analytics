@@ -17,4 +17,5 @@ data/processed/*
 # Editor settings
 .vscode/
 
-.pbi/cache.abf
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
