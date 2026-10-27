@@ -55,7 +55,7 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | 8. Staging layer | 8 views in `sql/staging/`, with tests | ✅ Done |
 | 9. Mart layer | 4 dimensions and 2 fact tables in `sql/marts/`, with tests | ✅ Done |
 | 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 26 checks | ✅ Done |
-| 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ⏳ Next |
+| 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ✅ Done |
 | 12. Dashboard | Power BI executive dashboard | ⏳ Planned |
 | 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
 
@@ -67,6 +67,8 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | [02 Data quality findings](docs/02_data_quality_findings.md) | Profiling results and decision log |
 | [03 Data model](docs/03_data_model.md) | Star schema design |
 | [04 ETL pipeline](docs/04_etl_pipeline.md) | Layers, data quality controls, how to run |
+| [05 — Findings](docs/05_findings.md) | Executive summary and findings for BQ1–BQ5 |
+| [RFM and CLV notebook](notebooks/01_rfm_clv.ipynb) | Python customer segmentation and lifetime value |
 
 ## 6. Repository structure
 
