@@ -9,6 +9,15 @@
         "page": "2.3.1"
       },
       "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Olist_Light925259758241563.json",
+      "reportVersionAtImport": {
+        "visual": "2.14.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
     }
   },
   "filterConfig": {
@@ -89,7 +98,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "true"
+                "Value": "false"
               }
             }
           },
@@ -113,6 +122,17 @@
           "name": "Fluent2-CY26SU10",
           "path": "BaseThemes/Fluent2-CY26SU10.json",
           "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Olist_Light925259758241563.json",
+          "path": "Olist_Light925259758241563.json",
+          "type": "CustomTheme"
         }
       ]
     }

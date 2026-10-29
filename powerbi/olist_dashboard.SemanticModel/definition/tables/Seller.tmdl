@@ -3,6 +3,7 @@ table Seller
 
 	column seller_id
 		dataType: string
+		isHidden
 		lineageTag: 5e1c7d92-2013-4ef0-946b-7ef10941106f
 		summarizeBy: none
 		sourceColumn: seller_id

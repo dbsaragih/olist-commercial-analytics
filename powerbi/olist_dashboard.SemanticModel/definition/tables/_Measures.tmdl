@@ -3,6 +3,7 @@ table _Measures
 
 	measure GMV = CALCULATE ( SUM ( 'Order Items'[price] ), 'Order Items'[is_delivered] = TRUE () )
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Sales
 		lineageTag: 032956fc-bcdb-48ae-9499-07130afbaed2
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -11,6 +12,7 @@ table _Measures
 			
 			CALCULATE ( SUM ( 'Order Items'[freight_value] ), 'Order Items'[is_delivered] = TRUE () )
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Freight
 		lineageTag: 8caa7315-3e77-4924-ab26-e212e724897c
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -19,18 +21,21 @@ table _Measures
 			
 			CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE () )
 		formatString: #,0
+		displayFolder: Sales
 		lineageTag: fc8d7d36-2e31-486b-a780-3954922c6df6
 
 	measure Customers =
 			
 			CALCULATE ( DISTINCTCOUNT ( Orders[customer_unique_id] ), Orders[is_delivered] = TRUE () )
 		formatString: #,0
+		displayFolder: Customers
 		lineageTag: c862aab8-9513-46ae-ba6a-895eb3865ee6
 
 	measure AOV =
 			
 			DIVIDE ( [GMV], [Delivered Orders] )
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Sales
 		lineageTag: 20922ef0-4eab-416c-b2f9-ca30c552f0d1
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -39,6 +44,7 @@ table _Measures
 			
 			DIVIDE ( [Freight], [GMV] + [Freight] )
 		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Freight
 		lineageTag: 3a9f3ad8-285b-4b80-a9b9-3ecce10b80d2
 
 	measure 'Late Rate' =
@@ -48,7 +54,88 @@ table _Measures
 			    CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[excl_delivery_time] = FALSE () )
 			)
 		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Delivery
 		lineageTag: 5edf4021-902e-4444-bf76-d09175b97791
+
+	measure 'Items Sold' =
+			
+			CALCULATE ( COUNTROWS ( 'Order Items' ), 'Order Items'[is_delivered] = TRUE () )
+		formatString: #,0
+		displayFolder: Sales
+		lineageTag: 32f02cbc-13f3-4efd-a852-9037721f7365
+
+	measure 'Items per Order' =
+			
+			DIVIDE ( [Items Sold], [Delivered Orders] )
+		formatString: 0.00
+		displayFolder: Sales
+		lineageTag: a2debfe0-93ef-4ed3-bb69-827863da9bbd
+
+	measure 'Avg Item Price' =
+			
+			DIVIDE ( [GMV], [Items Sold] )
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Sales
+		lineageTag: 1ebbaa03-bf7b-4e42-abd2-cf3e2daf0a9c
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Returned Customers' =
+			
+			COUNTROWS (FILTER( values('Orders'[customer_unique_id]), CALCULATE(
+			            DISTINCTCOUNT(Orders[purchase_date_key]),Orders[is_delivered] = TRUE()
+			       ) >= 2
+			    )
+			)
+		formatString: #,0
+		displayFolder: Customers
+		lineageTag: 244f249f-8aa9-47fa-8391-919f94911ea8
+
+	measure 'Return Rate' =
+			
+			DIVIDE ( [Returned Customers], [Customers] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: 91a633c6-7838-43ff-9c59-11f6f703f001
+
+	measure 'Late Orders' =
+			
+			CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[is_late] = TRUE () )
+		formatString: #,0
+		displayFolder: Delivery
+		lineageTag: 9d898dff-2981-40e3-ba25-a61eddd1ef23
+
+	measure 'Avg Review Score' =
+			
+			CALCULATE ( AVERAGE ( Orders[review_score] ), Orders[is_delivered] = TRUE () )
+		formatString: 0.00
+		displayFolder: Delivery
+		lineageTag: a40c6fbb-9068-4762-9775-e9ce77f2d5b8
+
+	measure 'Orders Delivered (by delivery date)' =
+			
+			CALCULATE (
+			    [Delivered Orders],
+			    USERELATIONSHIP ( 'Date'[date_key], Orders[delivered_date_key] )
+			)
+		formatString: #,0
+		displayFolder: Delivery
+		lineageTag: f7fff650-5998-48f3-b15f-0d74414dc7ac
+
+	measure 'Low Score Rate' =
+			
+			DIVIDE (
+			    CALCULATE (
+			        COUNTROWS ( Orders ),
+			        Orders[is_delivered] = TRUE (),
+			        Orders[has_review] = TRUE (),
+			        Orders[review_score] <= 2
+			    ),
+			    CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[has_review] = TRUE () )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Delivery
+		lineageTag: 4edd83fa-47dd-4291-9e84-5d1e606ca4f2
 
 	partition _Measures = m
 		mode: import

@@ -3,9 +3,12 @@ table Product
 
 	column product_id
 		dataType: string
+		isHidden
 		lineageTag: e78f9253-4ed2-40b6-951d-08d012ea42f8
 		summarizeBy: none
 		sourceColumn: product_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

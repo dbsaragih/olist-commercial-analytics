@@ -4,10 +4,13 @@ table Date
 
 	column date_key
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 9ed02e26-9243-4fab-abcf-cfa65c2a8c87
 		summarizeBy: none
 		sourceColumn: date_key
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = User
 
@@ -42,13 +45,17 @@ table Date
 		annotation SummarizationSetBy = Automatic
 
 	column month
-		dataType: int64
-		formatString: 0
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: c3c8cff1-3d69-4e81-92a3-ae8444b0d7ad
 		summarizeBy: none
 		sourceColumn: month
 
-		annotation SummarizationSetBy = User
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column month_short
 		dataType: string
@@ -62,12 +69,17 @@ table Date
 		annotation SummarizationSetBy = Automatic
 
 	column year_month
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: cf29e72b-04f5-462d-a9be-45e2c039fd31
 		summarizeBy: none
 		sourceColumn: year_month
 
+		changedProperty = DataType
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column month_start
 		dataType: dateTime

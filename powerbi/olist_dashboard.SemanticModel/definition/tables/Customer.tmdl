@@ -3,9 +3,12 @@ table Customer
 
 	column customer_unique_id
 		dataType: string
+		isHidden
 		lineageTag: 7b36ea2f-2e36-4490-9117-02cb96f65a73
 		summarizeBy: none
 		sourceColumn: customer_unique_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

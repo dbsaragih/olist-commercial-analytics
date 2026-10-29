@@ -3,77 +3,104 @@ table 'Order Items'
 
 	column order_id
 		dataType: string
+		isHidden
 		lineageTag: 18282769-4e04-41e1-83d3-a901549d11f4
 		summarizeBy: none
 		sourceColumn: order_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column order_item_id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 79f18d05-58cf-40c0-ae73-0e448c3bcd5b
 		summarizeBy: sum
 		sourceColumn: order_item_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column product_id
 		dataType: string
+		isHidden
 		lineageTag: 0a4be761-86b8-4468-9969-51d7f4f7fc8d
 		summarizeBy: none
 		sourceColumn: product_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column seller_id
 		dataType: string
+		isHidden
 		lineageTag: 1cca5577-4999-40b8-82e9-738dd2d14f73
 		summarizeBy: none
 		sourceColumn: seller_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column customer_unique_id
 		dataType: string
+		isHidden
 		lineageTag: d7062b44-3b7b-4bbc-8034-1d4259efd349
 		summarizeBy: none
 		sourceColumn: customer_unique_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column purchase_date_key
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 7923ef2d-c506-4269-b9cc-cfbce2e87466
 		summarizeBy: none
 		sourceColumn: purchase_date_key
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column order_status
 		dataType: string
+		isHidden
 		lineageTag: d8728f84-60a9-4fed-81bb-ab576d6e0144
 		summarizeBy: none
 		sourceColumn: order_status
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column is_delivered
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: eced2697-e3f8-466b-beed-e24d042a3df4
 		summarizeBy: none
 		sourceColumn: is_delivered
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column in_analysis_period
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 530c8d24-b893-4e4b-9532-bef4b7db989c
 		summarizeBy: none
 		sourceColumn: in_analysis_period
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -95,9 +122,12 @@ table 'Order Items'
 
 	column price
 		dataType: double
+		isHidden
 		lineageTag: a32f60d9-c737-461e-a2e6-eeda0925db25
 		summarizeBy: sum
 		sourceColumn: price
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -105,9 +135,12 @@ table 'Order Items'
 
 	column freight_value
 		dataType: double
+		isHidden
 		lineageTag: 81a3ea54-f527-4265-9291-88dc5219ea9d
 		summarizeBy: sum
 		sourceColumn: freight_value
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -115,9 +148,12 @@ table 'Order Items'
 
 	column freight_share
 		dataType: double
+		isHidden
 		lineageTag: 8436d775-7a45-428b-bccb-b4e33687213a
 		summarizeBy: sum
 		sourceColumn: freight_share
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -125,19 +161,25 @@ table 'Order Items'
 
 	column shipping_limit_ts
 		dataType: dateTime
+		isHidden
 		formatString: General Date
 		lineageTag: da283cf2-0bf5-4303-bf20-bd288057fc64
 		summarizeBy: none
 		sourceColumn: shipping_limit_ts
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column excl_handover
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 082db06b-9c48-4069-b413-3c859cdf6629
 		summarizeBy: none
 		sourceColumn: excl_handover
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

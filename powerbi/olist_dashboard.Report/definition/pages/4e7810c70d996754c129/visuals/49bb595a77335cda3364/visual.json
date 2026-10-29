@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "49bb595a77335cda3364",
+  "position": {
+    "x": 24,
+    "y": 666,
+    "z": 9000,
+    "height": 36,
+    "width": 1232,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Delivered orders, Jan 2017 – Aug 2018. Region = customer's latest address. Return rate = customers who bought on 2+ different days."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
