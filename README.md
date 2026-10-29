@@ -2,7 +2,7 @@
 
 **End-to-end analytics project on the Olist Brazilian e-commerce dataset: from raw data to business recommendations.**
 
-> **Status: in progress.** Data foundation and automated ETL pipeline complete: one command rebuilds a tested star schema in PostgreSQL. Analysis, dashboard and recommendations are next.
+>**Status: in progress.** Analysis complete; Power BI dashboard in progress.
 ---
 
 ## 1. Business context
@@ -24,6 +24,7 @@ Full definitions, hypotheses and scope: [docs/01_problem_statement.md](docs/01_p
 ## 2. Dataset
 
 - **Source:** [Brazilian E-Commerce Public Dataset by Olist (Kaggle)](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+- **Licence:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) (attribution, non-commercial, share-alike). This project is a non-commercial portfolio analysis; all credit for the data goes to Olist.
 - **Size:** ~99k orders across 9 related tables (orders, order items, payments, reviews, customers, sellers, products, geolocation, category translation)
 - **Analysis period:** Jan 2017 – Aug 2018 (2016 is incomplete; Sep–Oct 2018 is the extract cut-off, confirmed during profiling)
 - Raw data is **not** stored in this repo. See *How to run* below.
@@ -56,7 +57,7 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | 9. Mart layer | 4 dimensions and 2 fact tables in `sql/marts/`, with tests | ✅ Done |
 | 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 26 checks | ✅ Done |
 | 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ✅ Done |
-| 12. Dashboard | Power BI executive dashboard | ⏳ Planned |
+| 12. Dashboard | Power BI executive dashboard | 🔄 In progress |
 | 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
 
 ## 5. Documentation
@@ -72,20 +73,28 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 
 ## 6. Repository structure
 
+## 6. Repository structure
+
 ```
 olist-commercial-analytics/
-├── docs/          # problem statement, data quality, data model, ETL pipeline
-├── sql/           # data profiling queries
-│   ├── staging/   # staging views
-│   └── marts/     # star schema tables
-├── src/           # Python loader (load_raw.py)
-├── tests/         # data quality and reconciliation tests
-├── notebooks/     # analysis (coming)
-├── dashboard/     # Power BI file (coming)
-├── deck/          # presentation (coming)
+├── run_pipeline.py      # one command: load, build, check
+├── src/                 # Python raw-data loader (load_raw.py)
+├── sql/
+│   ├── 01–03_profile_*  # data profiling queries
+│   ├── staging/         # 8 staging views
+│   ├── marts/           # star schema: 4 dimensions, 2 facts
+│   └── analysis/        # BQ1–BQ5 analysis queries
+├── tests/               # layer tests and the 26 pipeline checks
+├── notebooks/           # Python: RFM segmentation and CLV
+├── powerbi/             # Power BI project (.pbip) and theme
+├── reports/figures/     # exported charts and dashboard images
+├── docs/                # problem statement, data quality, model, pipeline, findings
+├── deck/                # presentation (coming)
 ├── requirements.txt
 └── README.md
 ```
+
+Raw data (`data/`), credentials (`.env`) and the Power BI data cache are excluded from Git.
 ## 7. How to run
 
 1. Clone this repo and create a virtual environment: run `py -m venv .venv`, then `.venv\Scripts\activate`, then `pip install -r requirements.txt`.
