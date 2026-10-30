@@ -63,7 +63,7 @@ and that engine stalled in 2018.**
 
 | Metric | Jan–Aug 2017 | Jan–Aug 2018 | Change |
 |---|---|---|---|
-| Delivered orders | 21,998 | 52,783 | +140.9% |
+| Delivered orders | 21,998 | 52,783 | +139.9% |
 | GMV | R$ 2,993,456 | R$ 7,218,125 | +141.1% |
 | Average order value | R$ 136.08 | R$ 136.75 | +0.5% |
 | Items per order | 1.134 | 1.143 | +0.8% |

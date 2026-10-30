@@ -137,6 +137,72 @@ table _Measures
 		displayFolder: Delivery
 		lineageTag: 4edd83fa-47dd-4291-9e84-5d1e606ca4f2
 
+	measure 'GMV LY' =
+			
+			CALCULATE (
+			    [GMV],
+			    SAMEPERIODLASTYEAR ( 'Date'[full_date] ),
+			    'Date'[in_analysis_period] = TRUE ()
+			)
+		formatString: #,0
+		displayFolder: Time intelligence
+		lineageTag: 0416e359-1b3d-4458-9945-830e864965cf
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Delivered Orders LY' =
+			
+			CALCULATE (
+			    [Delivered Orders],
+			    SAMEPERIODLASTYEAR ( 'Date'[full_date] ),
+			    'Date'[in_analysis_period] = TRUE ()
+			)
+		formatString: #,0
+		displayFolder: Time intelligence
+		lineageTag: 9f50612c-482e-499c-aa05-2c37d6e712f9
+
+	measure 'AOV LY' =
+			
+			DIVIDE ( [GMV LY], [Delivered Orders LY] )
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Time intelligence
+		lineageTag: 6e1a8180-423a-413f-9ebc-aa086fd07d95
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'GMV Change' =
+			
+			IF ( HASONEVALUE ( 'Date'[year] ), [GMV] - [GMV LY] )
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Time intelligence
+		lineageTag: 141b4883-0275-4e9e-a341-55d557590a38
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'GMV YoY %' =
+			
+			IF ( HASONEVALUE ( 'Date'[year] ), DIVIDE ( [GMV] - [GMV LY], [GMV LY] ) )
+		displayFolder: Time intelligence
+		lineageTag: 8e9d9893-21e4-40e2-b584-a083a5fd3d55
+
+		formatStringDefinition = "+0.0%;-0.0%;0.0%"
+
+	measure 'Orders YoY %' =
+			
+			IF ( HASONEVALUE ( 'Date'[year] ), DIVIDE ( [Delivered Orders] - [Delivered Orders LY], [Delivered Orders LY] ) )
+		displayFolder: Time intelligence
+		lineageTag: 1e432e7a-811c-4067-bf61-cb95cd0e2144
+
+		formatStringDefinition = "+0.0%;-0.0%;0.0%"
+
+	measure 'AOV YoY %' =
+			
+			IF ( HASONEVALUE ( 'Date'[year] ), DIVIDE ( [AOV] - [AOV LY], [AOV LY] ) )
+		displayFolder: Time intelligence
+		lineageTag: 7b02f262-e039-43a5-8bfd-bda00fba911a
+
+		formatStringDefinition = "+0.0%;-0.0%;0.0%"
+
 	partition _Measures = m
 		mode: import
 		source =
