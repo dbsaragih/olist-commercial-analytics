@@ -71,6 +71,24 @@ FROM (VALUES
        (SELECT COUNT(*) FROM mart.fact_orders WHERE delivery_days < 0)),
   (26, 'mart', 'unflagged negative handover times',      0,
        (SELECT COUNT(*) FROM mart.fact_orders
-         WHERE seller_handover_days < 0 AND NOT excl_carrier_leg))
+         WHERE seller_handover_days < 0 AND NOT excl_carrier_leg)),
+      
+  -- Marts: customer value (BQ2 and RFM single source)
+  (27, 'mart', 'customer_value rows',                    93104,
+       (SELECT COUNT(*) FROM mart.customer_value)),
+  (28, 'mart', 'returners (2+ purchase days)',           2005,
+       (SELECT COUNT(*) FROM mart.customer_value WHERE is_returner)),
+  (29, 'mart', 'returned within 90 days (eligible)',     981,
+       (SELECT COUNT(*) FROM mart.customer_value WHERE eligible_90d AND returned_90d)),
+  (30, 'mart', 'returned within 180 days (eligible)',    1112,
+       (SELECT COUNT(*) FROM mart.customer_value WHERE eligible_180d AND returned_180d)),
+  (31, 'mart', 'GMV gap: customer_value vs fact_orders', 0,
+       (SELECT (SELECT SUM(gmv) FROM mart.customer_value)
+             - (SELECT SUM(o.order_gmv) FROM mart.fact_orders o
+                  JOIN mart.dim_date d ON d.date_key = o.purchase_date_key
+                 WHERE o.is_delivered AND d.in_analysis_period))),
+  (32, 'mart', 'RFM: one-time, high value, lapsed',      20954,
+       (SELECT COUNT(*) FROM mart.customer_value
+         WHERE rfm_segment = '4. One-time, high value, lapsed'))
 ) AS checks(n, layer, check_name, expected, actual)
 ORDER BY n;

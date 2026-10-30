@@ -43,6 +43,7 @@ BUILD_STEPS = [
     "marts/dim_product.sql",
     "marts/fact_order_items.sql",
     "marts/fact_orders.sql",
+    "marts/customer_value.sql",
 ]
 
 
