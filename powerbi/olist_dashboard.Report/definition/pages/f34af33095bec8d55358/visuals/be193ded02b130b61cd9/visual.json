@@ -46,7 +46,8 @@
                 }
               },
               "queryRef": "_Measures.GMV",
-              "nativeQueryRef": "GMV"
+              "nativeQueryRef": "This year",
+              "displayName": "This year"
             },
             {
               "field": {
@@ -60,7 +61,8 @@
                 }
               },
               "queryRef": "_Measures.GMV LY",
-              "nativeQueryRef": "GMV LY"
+              "nativeQueryRef": "Last year",
+              "displayName": "Last year"
             }
           ]
         }

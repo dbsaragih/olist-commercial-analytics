@@ -7492,6 +7492,16 @@ cultureInfo en-US
 			          "gmv": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "This year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -9111,6 +9121,16 @@ cultureInfo en-US
 			        {
 			          "gmv ly": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Last year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]

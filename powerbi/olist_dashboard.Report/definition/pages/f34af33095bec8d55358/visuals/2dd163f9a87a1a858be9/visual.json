@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "Date.year",
-              "nativeQueryRef": "year",
-              "active": true
+              "nativeQueryRef": "Year",
+              "active": true,
+              "displayName": "Year"
             }
           ]
         }
