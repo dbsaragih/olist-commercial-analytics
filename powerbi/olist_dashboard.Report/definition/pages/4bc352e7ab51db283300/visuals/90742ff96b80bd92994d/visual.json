@@ -84,6 +84,22 @@
             "metadata": "_Measures.Returned Customers"
           }
         }
+      ],
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Returning customers'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Returned Customers"
+          }
+        }
       ]
     },
     "visualContainerObjects": {

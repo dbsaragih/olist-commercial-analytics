@@ -67,6 +67,22 @@
             "metadata": "_Measures.Return Rate 90d"
           }
         }
+      ],
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Return in 90 days'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Return Rate 90d"
+          }
+        }
       ]
     },
     "visualContainerObjects": {

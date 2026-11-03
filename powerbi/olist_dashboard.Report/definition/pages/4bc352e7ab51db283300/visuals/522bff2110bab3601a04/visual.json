@@ -67,6 +67,22 @@
             "metadata": "_Measures.Returner GMV Share"
           }
         }
+      ],
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Returners’ GMV share'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Returner GMV Share"
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true

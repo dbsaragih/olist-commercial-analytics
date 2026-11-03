@@ -67,6 +67,22 @@
             "metadata": "_Measures.Return Rate 180d"
           }
         }
+      ],
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Return in 180 days'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Return Rate 180d"
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true

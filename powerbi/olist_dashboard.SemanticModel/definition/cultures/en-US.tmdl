@@ -7502,16 +7502,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.9
 			          }
-			        },
-			        {
-			          "Customers": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -9845,6 +9835,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.485
 			          }
+			        },
+			        {
+			          "Share of customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -10088,6 +10088,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "Share of GMV": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -11469,9 +11479,1021 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.cohort_return_rate_90d": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Cohort Return Rate 90d"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cohort return rate 90d": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "order_item_has_product": {
+			      "Binding": {
+			        "ConceptualEntity": "Order Items"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order_item": {
+			          "Target": {
+			            "Entity": "order_item"
+			          }
+			        },
+			        "product": {
+			          "Target": {
+			            "Entity": "product"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order_item"
+			            },
+			            "Object": {
+			              "Role": "product"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "order_items_have_products"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "product"
+			            },
+			            "Object": {
+			              "Role": "order_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "products_have_order_items"
+			        }
+			      ]
+			    },
+			    "order_item_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Order Items"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order_item": {
+			          "Target": {
+			            "Entity": "order_item"
+			          }
+			        },
+			        "date": {
+			          "Target": {
+			            "Entity": "date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order_item"
+			            },
+			            "Object": {
+			              "Role": "date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "order_items_have_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date"
+			            },
+			            "Object": {
+			              "Role": "order_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_order_items"
+			        }
+			      ]
+			    },
+			    "order_item_has_customer": {
+			      "Binding": {
+			        "ConceptualEntity": "Order Items"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "order_item": {
+			          "Target": {
+			            "Entity": "order_item"
+			          }
+			        },
+			        "customer": {
+			          "Target": {
+			            "Entity": "customer"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "order_item"
+			            },
+			            "Object": {
+			              "Role": "customer"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "order_items_have_customers"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer"
+			            },
+			            "Object": {
+			              "Role": "order_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customers_have_order_items"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_cohort_return_rate_90d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.cohort_return_rate_90d": {
+			          "Target": {
+			            "Entity": "entity__measure.cohort_return_rate_90d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.cohort_return_rate_90d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_cohort_return_rate_90d"
+			        }
+			      ]
+			    },
+			    "customer_value_has_rfm_segment": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.rfm_segment": {
+			          "Target": {
+			            "Entity": "customer_value.rfm_segment"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.rfm_segment"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_rfm_segments"
+			        }
+			      ]
+			    },
+			    "customer_value_has_m_score": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.m_score": {
+			          "Target": {
+			            "Entity": "customer_value.m_score"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.m_score"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_m_scores"
+			        }
+			      ]
+			    },
+			    "customer_value_has_f_score": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.f_score": {
+			          "Target": {
+			            "Entity": "customer_value.f_score"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.f_score"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_f_scores"
+			        }
+			      ]
+			    },
+			    "customer_value_has_r_score": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.r_score": {
+			          "Target": {
+			            "Entity": "customer_value.r_score"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.r_score"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_r_scores"
+			        }
+			      ]
+			    },
+			    "customer_value_has_recency_day": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.recency_day": {
+			          "Target": {
+			            "Entity": "customer_value.recency_day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.recency_day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_recency_days"
+			        }
+			      ]
+			    },
+			    "customer_value_has_returned_18_0d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.returned_18_0d": {
+			          "Target": {
+			            "Entity": "customer_value.returned_18_0d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.returned_18_0d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_returned_18_0ds"
+			        }
+			      ]
+			    },
+			    "customer_value_has_eligible_18_0d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.eligible_18_0d": {
+			          "Target": {
+			            "Entity": "customer_value.eligible_18_0d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.eligible_18_0d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_eligible_18_0ds"
+			        }
+			      ]
+			    },
+			    "customer_value_has_returned_9_0d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.returned_9_0d": {
+			          "Target": {
+			            "Entity": "customer_value.returned_9_0d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.returned_9_0d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_returned_9_0ds"
+			        }
+			      ]
+			    },
+			    "customer_value_has_eligible_9_0d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.eligible_9_0d": {
+			          "Target": {
+			            "Entity": "customer_value.eligible_9_0d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.eligible_9_0d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_eligible_9_0ds"
+			        }
+			      ]
+			    },
+			    "customer_value_has_day_to_return": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.day_to_return": {
+			          "Target": {
+			            "Entity": "customer_value.day_to_return"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.day_to_return"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_day_to_return"
+			        }
+			      ]
+			    },
+			    "customer_value_has_return_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.return_date": {
+			          "Target": {
+			            "Entity": "customer_value.return_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.return_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_return_dates"
+			        }
+			      ]
+			    },
+			    "customer_value_has_is_returner": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.is_returner": {
+			          "Target": {
+			            "Entity": "customer_value.is_returner"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.is_returner"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_is_returners"
+			        }
+			      ]
+			    },
+			    "customer_value_has_gmv": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.gmv": {
+			          "Target": {
+			            "Entity": "customer_value.gmv"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.gmv"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_gmvs"
+			        }
+			      ]
+			    },
+			    "customer_value_has_purchase_day": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.purchase_day": {
+			          "Target": {
+			            "Entity": "customer_value.purchase_day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.purchase_day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_purchase_days"
+			        }
+			      ]
+			    },
+			    "customer_value_has_order": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.order": {
+			          "Target": {
+			            "Entity": "customer_value.order"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_orders"
+			        }
+			      ]
+			    },
+			    "customer_value_has_last_purchase_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.last_purchase_date": {
+			          "Target": {
+			            "Entity": "customer_value.last_purchase_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.last_purchase_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_last_purchase_dates"
+			        }
+			      ]
+			    },
+			    "customer_value_has_cohort_month": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.cohort_month": {
+			          "Target": {
+			            "Entity": "customer_value.cohort_month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.cohort_month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_cohort_months"
+			        }
+			      ]
+			    },
+			    "customer_value_has_first_purchase_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.first_purchase_date": {
+			          "Target": {
+			            "Entity": "customer_value.first_purchase_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.first_purchase_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_first_purchase_dates"
+			        }
+			      ]
+			    },
+			    "customer_value_has_customer_unique_id": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "customer_value.customer_unique_id": {
+			          "Target": {
+			            "Entity": "customer_value.customer_unique_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "customer_value.customer_unique_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_customer_unique_ids"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_customer_GMV_share": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.customer_GMV_share": {
+			          "Target": {
+			            "Entity": "entity__measure.customer_GMV_share"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.customer_GMV_share"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_customer_GMV_share"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_CV_customers": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.CV_customers": {
+			          "Target": {
+			            "Entity": "entity__measure.CV_customers"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.CV_customers"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_CV_customers"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_customer_share": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.customer_share": {
+			          "Target": {
+			            "Entity": "entity__measure.customer_share"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.customer_share"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_customer_share"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_returner_GMV_share": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.returner_GMV_share": {
+			          "Target": {
+			            "Entity": "entity__measure.returner_GMV_share"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.returner_GMV_share"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_returner_GMV_share"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_return_rate_180d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.return_rate_180d": {
+			          "Target": {
+			            "Entity": "entity__measure.return_rate_180d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.return_rate_180d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_return_rate_180d"
+			        }
+			      ]
+			    },
+			    "customer_value_has_entity__measure_return_rate_90d": {
+			      "Binding": {
+			        "ConceptualEntity": "Customer Value"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "customer_value": {
+			          "Target": {
+			            "Entity": "customer_value"
+			          }
+			        },
+			        "entity__measure.return_rate_90d": {
+			          "Target": {
+			            "Entity": "entity__measure.return_rate_90d"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "customer_value"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.return_rate_90d"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_values_have_return_rate_90d"
+			        }
+			      ]
+			    },
 			    "order_has_entity__measure_AOV_YoY_": {
 			      "Binding": {
 			        "ConceptualEntity": "Orders"
@@ -14782,969 +15804,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "sellers_have_order_items"
-			        }
-			      ]
-			    },
-			    "customer_value_has_entity__measure_return_rate_90d": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "entity__measure.return_rate_90d": {
-			          "Target": {
-			            "Entity": "entity__measure.return_rate_90d"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.return_rate_90d"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_return_rate_90d"
-			        }
-			      ]
-			    },
-			    "customer_value_has_entity__measure_return_rate_180d": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "entity__measure.return_rate_180d": {
-			          "Target": {
-			            "Entity": "entity__measure.return_rate_180d"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.return_rate_180d"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_return_rate_180d"
-			        }
-			      ]
-			    },
-			    "customer_value_has_entity__measure_returner_GMV_share": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "entity__measure.returner_GMV_share": {
-			          "Target": {
-			            "Entity": "entity__measure.returner_GMV_share"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.returner_GMV_share"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_returner_GMV_share"
-			        }
-			      ]
-			    },
-			    "customer_value_has_entity__measure_customer_share": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "entity__measure.customer_share": {
-			          "Target": {
-			            "Entity": "entity__measure.customer_share"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.customer_share"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_customer_share"
-			        }
-			      ]
-			    },
-			    "customer_value_has_entity__measure_CV_customers": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "entity__measure.CV_customers": {
-			          "Target": {
-			            "Entity": "entity__measure.CV_customers"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.CV_customers"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_CV_customers"
-			        }
-			      ]
-			    },
-			    "customer_value_has_entity__measure_customer_GMV_share": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "entity__measure.customer_GMV_share": {
-			          "Target": {
-			            "Entity": "entity__measure.customer_GMV_share"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.customer_GMV_share"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_customer_GMV_share"
-			        }
-			      ]
-			    },
-			    "customer_value_has_customer_unique_id": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.customer_unique_id": {
-			          "Target": {
-			            "Entity": "customer_value.customer_unique_id"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.customer_unique_id"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_customer_unique_ids"
-			        }
-			      ]
-			    },
-			    "customer_value_has_first_purchase_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.first_purchase_date": {
-			          "Target": {
-			            "Entity": "customer_value.first_purchase_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.first_purchase_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_first_purchase_dates"
-			        }
-			      ]
-			    },
-			    "customer_value_has_cohort_month": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.cohort_month": {
-			          "Target": {
-			            "Entity": "customer_value.cohort_month"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.cohort_month"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_cohort_months"
-			        }
-			      ]
-			    },
-			    "customer_value_has_last_purchase_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.last_purchase_date": {
-			          "Target": {
-			            "Entity": "customer_value.last_purchase_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.last_purchase_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_last_purchase_dates"
-			        }
-			      ]
-			    },
-			    "customer_value_has_order": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.order": {
-			          "Target": {
-			            "Entity": "customer_value.order"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.order"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_orders"
-			        }
-			      ]
-			    },
-			    "customer_value_has_purchase_day": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.purchase_day": {
-			          "Target": {
-			            "Entity": "customer_value.purchase_day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.purchase_day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_purchase_days"
-			        }
-			      ]
-			    },
-			    "customer_value_has_gmv": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.gmv": {
-			          "Target": {
-			            "Entity": "customer_value.gmv"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.gmv"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_gmvs"
-			        }
-			      ]
-			    },
-			    "customer_value_has_is_returner": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.is_returner": {
-			          "Target": {
-			            "Entity": "customer_value.is_returner"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.is_returner"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_is_returners"
-			        }
-			      ]
-			    },
-			    "customer_value_has_return_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.return_date": {
-			          "Target": {
-			            "Entity": "customer_value.return_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.return_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_return_dates"
-			        }
-			      ]
-			    },
-			    "customer_value_has_day_to_return": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.day_to_return": {
-			          "Target": {
-			            "Entity": "customer_value.day_to_return"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.day_to_return"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_day_to_return"
-			        }
-			      ]
-			    },
-			    "customer_value_has_eligible_9_0d": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.eligible_9_0d": {
-			          "Target": {
-			            "Entity": "customer_value.eligible_9_0d"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.eligible_9_0d"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_eligible_9_0ds"
-			        }
-			      ]
-			    },
-			    "customer_value_has_returned_9_0d": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.returned_9_0d": {
-			          "Target": {
-			            "Entity": "customer_value.returned_9_0d"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.returned_9_0d"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_returned_9_0ds"
-			        }
-			      ]
-			    },
-			    "customer_value_has_eligible_18_0d": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.eligible_18_0d": {
-			          "Target": {
-			            "Entity": "customer_value.eligible_18_0d"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.eligible_18_0d"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_eligible_18_0ds"
-			        }
-			      ]
-			    },
-			    "customer_value_has_returned_18_0d": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.returned_18_0d": {
-			          "Target": {
-			            "Entity": "customer_value.returned_18_0d"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.returned_18_0d"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_returned_18_0ds"
-			        }
-			      ]
-			    },
-			    "customer_value_has_recency_day": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.recency_day": {
-			          "Target": {
-			            "Entity": "customer_value.recency_day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.recency_day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_recency_days"
-			        }
-			      ]
-			    },
-			    "customer_value_has_r_score": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.r_score": {
-			          "Target": {
-			            "Entity": "customer_value.r_score"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.r_score"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_r_scores"
-			        }
-			      ]
-			    },
-			    "customer_value_has_f_score": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.f_score": {
-			          "Target": {
-			            "Entity": "customer_value.f_score"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.f_score"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_f_scores"
-			        }
-			      ]
-			    },
-			    "customer_value_has_m_score": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.m_score": {
-			          "Target": {
-			            "Entity": "customer_value.m_score"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.m_score"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_m_scores"
-			        }
-			      ]
-			    },
-			    "customer_value_has_rfm_segment": {
-			      "Binding": {
-			        "ConceptualEntity": "Customer Value"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "customer_value": {
-			          "Target": {
-			            "Entity": "customer_value"
-			          }
-			        },
-			        "customer_value.rfm_segment": {
-			          "Target": {
-			            "Entity": "customer_value.rfm_segment"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer_value"
-			            },
-			            "Object": {
-			              "Role": "customer_value.rfm_segment"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customer_values_have_rfm_segments"
-			        }
-			      ]
-			    },
-			    "order_item_has_customer": {
-			      "Binding": {
-			        "ConceptualEntity": "Order Items"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order_item": {
-			          "Target": {
-			            "Entity": "order_item"
-			          }
-			        },
-			        "customer": {
-			          "Target": {
-			            "Entity": "customer"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order_item"
-			            },
-			            "Object": {
-			              "Role": "customer"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "order_items_have_customers"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "customer"
-			            },
-			            "Object": {
-			              "Role": "order_item"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "customers_have_order_items"
-			        }
-			      ]
-			    },
-			    "order_item_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Order Items"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order_item": {
-			          "Target": {
-			            "Entity": "order_item"
-			          }
-			        },
-			        "date": {
-			          "Target": {
-			            "Entity": "date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order_item"
-			            },
-			            "Object": {
-			              "Role": "date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "order_items_have_dates"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date"
-			            },
-			            "Object": {
-			              "Role": "order_item"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_order_items"
-			        }
-			      ]
-			    },
-			    "order_item_has_product": {
-			      "Binding": {
-			        "ConceptualEntity": "Order Items"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "order_item": {
-			          "Target": {
-			            "Entity": "order_item"
-			          }
-			        },
-			        "product": {
-			          "Target": {
-			            "Entity": "product"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "order_item"
-			            },
-			            "Object": {
-			              "Role": "product"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "order_items_have_products"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "product"
-			            },
-			            "Object": {
-			              "Role": "order_item"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "products_have_order_items"
 			        }
 			      ]
 			    },

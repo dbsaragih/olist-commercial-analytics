@@ -74,6 +74,22 @@
             "metadata": "_Measures.Return Rate"
           }
         }
+      ],
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Return rate (any time)'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Return Rate"
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
