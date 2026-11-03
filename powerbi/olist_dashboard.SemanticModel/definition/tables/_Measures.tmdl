@@ -203,6 +203,68 @@ table _Measures
 
 		formatStringDefinition = "+0.0%;-0.0%;0.0%"
 
+	measure 'Return Rate 90d' =
+			
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( 'Customer Value' ),
+			                'Customer Value'[eligible_90d] = TRUE (), 'Customer Value'[returned_90d] = TRUE () ),
+			    CALCULATE ( COUNTROWS ( 'Customer Value' ), 'Customer Value'[eligible_90d] = TRUE () )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: 9dc926b8-0fcd-4197-8197-5dc41c0fa11f
+
+	measure 'Return Rate 180d' =
+			
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( 'Customer Value' ),
+			                'Customer Value'[eligible_180d] = TRUE (), 'Customer Value'[returned_180d] = TRUE () ),
+			    CALCULATE ( COUNTROWS ( 'Customer Value' ), 'Customer Value'[eligible_180d] = TRUE () )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: 45f972df-c7cd-4330-bf39-b8f47a92691f
+
+	measure 'Returner GMV Share' =
+			
+			DIVIDE (
+			    CALCULATE ( SUM ( 'Customer Value'[gmv] ), 'Customer Value'[is_returner] = TRUE () ),
+			    SUM ( 'Customer Value'[gmv] )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: 667dddc5-e0fd-4b6f-a02e-82b4f0727287
+
+	measure 'Customer Share' =
+			
+			DIVIDE ( COUNTROWS ( 'Customer Value' ), CALCULATE ( COUNTROWS ( 'Customer Value' ), ALL ( 'Customer Value' ) ) )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: 0575a22e-9e6e-4194-b60c-654615243c2d
+
+	measure 'CV Customers' =
+			
+			COUNTROWS ( 'Customer Value' )
+		formatString: #,0
+		displayFolder: Customers
+		lineageTag: 3b6bd16b-420d-4fa0-87c8-34e9f904b45c
+
+	measure 'Customer GMV Share' =
+			
+			DIVIDE ( SUM ( 'Customer Value'[gmv] ), CALCULATE ( SUM ( 'Customer Value'[gmv] ), ALL ( 'Customer Value' ) ) )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: a96c64d2-3ece-42ea-8db2-e41fa4dd0f59
+
+	measure 'Cohort Return Rate 90d' =
+			
+			VAR CohortEnd = EOMONTH ( MAX ( 'Customer Value'[cohort_month] ), 0 )
+			RETURN
+			    IF ( CohortEnd + 90 <= DATE ( 2018, 8, 31 ), [Return Rate 90d] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Customers
+		lineageTag: 815633a1-a255-4e6e-8f62-99517e876b1f
+
 	partition _Measures = m
 		mode: import
 		source =

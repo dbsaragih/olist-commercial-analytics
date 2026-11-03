@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "6b781d02ad8928390323",
+  "position": {
+    "x": 24,
+    "y": 668,
+    "z": 9000,
+    "height": 36,
+    "width": 1232,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Customers with a delivered order, Jan 2017 – Aug 2018. Return = purchase on a later day. 90/180-day rates use only cohorts whose full window ends by Aug 2018 (no bar = not yet observable). RFM: recency at 2018-09-01; frequency 1 vs 2+ purchase days."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

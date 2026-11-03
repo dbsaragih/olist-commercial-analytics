@@ -1,0 +1,196 @@
+table 'Customer Value'
+	lineageTag: 2d3a1e30-2ec7-48df-a8c1-6fd3f1f2ba23
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 748968f6-4d0d-40ea-8e5c-15c9242ffe1e
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_purchase_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6fa8f1db-8c64-43d7-9125-d081f78d22df
+		summarizeBy: none
+		sourceColumn: first_purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cohort_month
+		dataType: dateTime
+		formatString: yyyy-mm
+		lineageTag: 7f686b8f-5064-4609-8412-8b258c498361
+		summarizeBy: none
+		sourceColumn: cohort_month
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column last_purchase_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3f948b35-f689-4d05-85d0-56d1589834bf
+		summarizeBy: none
+		sourceColumn: last_purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column orders
+		dataType: int64
+		formatString: 0
+		lineageTag: e99a301f-bb31-4c59-9387-9c85fef2f9f7
+		summarizeBy: sum
+		sourceColumn: orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 06b45642-d6ca-4883-a1f9-4e52c764a094
+		summarizeBy: sum
+		sourceColumn: purchase_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column gmv
+		dataType: double
+		lineageTag: cb3718fb-6b28-4b01-b0ce-5fbbd3c16442
+		summarizeBy: sum
+		sourceColumn: gmv
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_returner
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 57a93070-6d20-4079-b748-62c6eb694b4f
+		summarizeBy: none
+		sourceColumn: is_returner
+
+		annotation SummarizationSetBy = Automatic
+
+	column return_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d1c0200c-6dd0-4999-aa39-11d075695c67
+		summarizeBy: none
+		sourceColumn: return_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column days_to_return
+		dataType: int64
+		formatString: 0
+		lineageTag: ba8a8c10-103d-4de9-bb1c-3d5e8b31ddda
+		summarizeBy: sum
+		sourceColumn: days_to_return
+
+		annotation SummarizationSetBy = Automatic
+
+	column eligible_90d
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 517f5de9-f467-43ac-a84e-7ed9bdcb3288
+		summarizeBy: none
+		sourceColumn: eligible_90d
+
+		annotation SummarizationSetBy = Automatic
+
+	column returned_90d
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c97525ea-8cb6-46dd-9fd3-68ed0ef05432
+		summarizeBy: none
+		sourceColumn: returned_90d
+
+		annotation SummarizationSetBy = Automatic
+
+	column eligible_180d
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9dedbe13-80ca-4657-b332-6038e6f0396d
+		summarizeBy: none
+		sourceColumn: eligible_180d
+
+		annotation SummarizationSetBy = Automatic
+
+	column returned_180d
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a106cba3-672c-49db-b523-a0d025b86b61
+		summarizeBy: none
+		sourceColumn: returned_180d
+
+		annotation SummarizationSetBy = Automatic
+
+	column recency_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 10816ff7-678c-4f18-9d97-1b6614dc4a37
+		summarizeBy: sum
+		sourceColumn: recency_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column r_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d079977-a377-4959-a0e5-2cd4769d0561
+		summarizeBy: none
+		sourceColumn: r_score
+
+		annotation SummarizationSetBy = User
+
+	column f_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 956f74c5-5ed8-4ea5-b165-b5516e0b7550
+		summarizeBy: none
+		sourceColumn: f_score
+
+		annotation SummarizationSetBy = User
+
+	column m_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e4cef52-19bd-44b2-9a00-0d3d123a7058
+		summarizeBy: none
+		sourceColumn: m_score
+
+		annotation SummarizationSetBy = User
+
+	column rfm_segment
+		dataType: string
+		lineageTag: 970061e2-9efd-4566-b6fe-41aef787f4fb
+		summarizeBy: none
+		sourceColumn: rfm_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Value' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "olist"),
+				    mart_customer_value = Source{[Schema="mart",Item="customer_value"]}[Data]
+				in
+				    mart_customer_value
+
+	changedProperty = Name
+

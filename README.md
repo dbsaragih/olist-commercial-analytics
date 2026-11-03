@@ -39,7 +39,7 @@ A reproducible ETL pipeline (ELT pattern) loads 1.55 million rows from 9 source 
 | `staging` | 8 views: correct types, consistent names, data-quality flags | `sql/staging/` |
 | `mart` | Star schema: 4 dimensions, 2 fact tables, enforced primary and foreign keys | `sql/marts/` |
 
-One command (`py run_pipeline.py`) rebuilds every layer in dependency order and runs 26 automated checks against independently verified numbers, stopping with a clear message if any step or check fails.
+One command (`py run_pipeline.py`) rebuilds every layer in dependency order and runs 32 automated checks against independently verified numbers, stopping with a clear message if any step or check fails.
 Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 
 ## 4. Progress
@@ -55,7 +55,7 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | 7. Data model | [docs/03_data_model.md](docs/03_data_model.md) (star schema design) | ✅ Done |
 | 8. Staging layer | 8 views in `sql/staging/`, with tests | ✅ Done |
 | 9. Mart layer | 4 dimensions and 2 fact tables in `sql/marts/`, with tests | ✅ Done |
-| 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 26 checks | ✅ Done |
+| 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 32 checks | ✅ Done |
 | 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ✅ Done |
 | 12. Dashboard | Power BI executive dashboard | 🔄 In progress |
 | 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
@@ -84,7 +84,7 @@ olist-commercial-analytics/
 │   ├── staging/         # 8 staging views
 │   ├── marts/           # star schema: 4 dimensions, 2 facts
 │   └── analysis/        # BQ1–BQ5 analysis queries
-├── tests/               # layer tests and the 26 pipeline checks
+├── tests/               # layer tests and the 32 pipeline checks
 ├── notebooks/           # Python: RFM segmentation and CLV
 ├── powerbi/             # Power BI project (.pbip) and theme
 ├── reports/figures/     # exported charts and dashboard images
@@ -100,7 +100,7 @@ Raw data (`data/`), credentials (`.env`) and the Power BI data cache are exclude
 1. Clone this repo and create a virtual environment: run `py -m venv .venv`, then `.venv\Scripts\activate`, then `pip install -r requirements.txt`.
 2. Download the dataset from the Kaggle link above and place the 9 CSV files in `data/raw/`.
 3. Create a `.env` file with your PostgreSQL connection details (not included in the repo).
-4. Run the pipeline with the virtual environment active: `py run_pipeline.py`. This loads the raw data, builds the staging views and the star schema, and runs 26 automated checks. It ends with `PIPELINE OK`, or names the step or check that failed.
+4. Run the pipeline with the virtual environment active: `py run_pipeline.py`. This loads the raw data, builds the staging views and the star schema, and runs 32 automated checks. It ends with `PIPELINE OK`, or names the step or check that failed.
 5. To rebuild only the SQL layers after changing a query, run `py run_pipeline.py --skip-load`.
 
 ## 8. Tools

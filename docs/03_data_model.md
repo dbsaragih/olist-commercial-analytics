@@ -98,3 +98,4 @@ dimension and connect through the conformed dimensions.
 | Payments not modelled | GMV uses item prices; payments were a reconciliation check only |
 | Delivery state and region also stored on `fact_order_items` | BQ5 analyses freight by category and region at item level; copying the order's delivery location avoids joining the two fact tables
 | `dim_date` used twice by `fact_orders` (purchase and delivered date) | Role-playing dimension: one date table, two relationships; in Power BI the delivered-date relationship is inactive and used via USERELATIONSHIP |
+| `customer_value`: customer-grain table built from the facts | Single source for retention and RFM, used by SQL, Python and Power BI; explicit eligible/returned flags avoid NULL handling downstream |

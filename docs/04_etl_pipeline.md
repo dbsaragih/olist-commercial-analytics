@@ -74,6 +74,7 @@ Treatment codes (T1–T9) refer to the decision log in
 | `dim_seller` | One seller | `seller_id` |
 | `fact_order_items` | One item line | `order_id` + `order_item_id`; 4 foreign keys |
 | `fact_orders` | One order | `order_id`; 3 foreign keys |
+| `customer_value` | One customer (delivered order in the analysis period) | `customer_unique_id`; 1 foreign key |
 
 Primary and foreign keys are enforced by the database, so a wrong grain or an
 orphan row stops the build. Design details: `docs/03_data_model.md`.
@@ -86,6 +87,7 @@ orphan row stops the build. Design details: `docs/03_data_model.md`.
 | Key checks | Every primary key unique; every foreign key resolves |
 | Reconciliation across layers | Item value equal in staging, `fact_order_items` and `fact_orders` (R$ 13,591,643.70) |
 | Reconciliation to profiling | Delivered orders 96,478; orders without items 775; reviewed orders 98,673 |
+| Single-source checks | `customer_value` reproduces the BQ2 retention counts and the notebook's RFM segments exactly (checks 27–32) |
 | Logic checks | No negative delivery times; impossible handover dates already flagged |
 
 Test queries: `tests/test_stg_*.sql`, `tests/test_mart_*.sql`.
@@ -103,7 +105,7 @@ Test queries: `tests/test_stg_*.sql`, `tests/test_mart_*.sql`.
 2. Create `.env` with the PostgreSQL connection settings.
 3. Run `py src/load_raw.py`.
 4. Run the SQL files in order: `sql/staging/*.sql`, then `sql/marts/dim_*.sql`,
-   then `fact_order_items.sql`, then `fact_orders.sql`.
+   then `fact_orders.sql`, then `customer_value.sql`.
 5. Run the test files in `tests/`.
 
 Automating steps 3–5 into a single command (`run_pipeline.py`) is in progress.
