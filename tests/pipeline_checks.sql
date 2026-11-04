@@ -91,6 +91,21 @@ FROM (VALUES
        (SELECT COUNT(*) FROM mart.customer_value
          WHERE rfm_segment = '4. One-time, high value, lapsed')),
   (33, 'mart', 'delivery_timing assigned (delivered)',   96470,
-       (SELECT COUNT(delivery_timing) FROM mart.fact_orders WHERE is_delivered))
+       (SELECT COUNT(delivery_timing) FROM mart.fact_orders WHERE is_delivered)),
+       
+  -- Marts: seller value (BQ4 single source)
+  (34, 'mart', 'seller_value rows',                      2945,
+       (SELECT COUNT(*) FROM mart.seller_value)),
+  (35, 'mart', 'GMV gap: seller_value vs order items',   0,
+       (SELECT (SELECT SUM(gmv) FROM mart.seller_value)
+             - (SELECT SUM(i.price) FROM mart.fact_order_items i
+                 JOIN mart.dim_date d ON d.date_key = i.purchase_date_key
+                 WHERE i.is_delivered AND d.in_analysis_period))),
+  (36, 'mart', 'sellers under R$ 1k',                    1561,
+       (SELECT COUNT(*) FROM mart.seller_value WHERE gmv_band = '1. Under R$ 1k')),
+  (37, 'mart', 'timed items add up (BQ4 Q5)',            109872,
+       (SELECT SUM(timed_items) FROM mart.seller_value)),
+  (38, 'mart', 'one-order sellers',                      516,
+       (SELECT COUNT(*) FROM mart.seller_value WHERE is_one_order_seller))
 ) AS checks(n, layer, check_name, expected, actual)
 ORDER BY n;
