@@ -106,6 +106,8 @@ FROM (VALUES
   (37, 'mart', 'timed items add up (BQ4 Q5)',            109872,
        (SELECT SUM(timed_items) FROM mart.seller_value)),
   (38, 'mart', 'one-order sellers',                      516,
-       (SELECT COUNT(*) FROM mart.seller_value WHERE is_one_order_seller))
+       (SELECT COUNT(*) FROM mart.seller_value WHERE is_one_order_seller)),
+  (39, 'mart', 'price_band assigned (all items)',        112650,
+       (SELECT COUNT(price_band) FROM mart.fact_order_items))       
 ) AS checks(n, layer, check_name, expected, actual)
 ORDER BY n;

@@ -34,6 +34,12 @@ SELECT
     i.freight_value,                                 -- additive
     ROUND(i.freight_value / (i.price + i.freight_value), 4)
                                                      AS freight_share,  -- non-additive
+      CASE                                                                -- BQ5 mix check
+        WHEN i.price <  50 THEN '1. Under R$ 50'
+        WHEN i.price < 100 THEN '2. R$ 50-99'
+        WHEN i.price < 200 THEN '3. R$ 100-199'
+        ELSE                    '4. R$ 200 and over'
+    END                                              AS price_band,                                                   
 
     -- Seller deadline and T5 flag
     i.shipping_limit_ts,
