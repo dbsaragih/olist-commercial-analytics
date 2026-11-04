@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "f61dfbef998492f79454",
+  "name": "e046d732c03bc56a2058",
   "position": {
-    "x": 9.1125159902853223,
-    "y": 0,
-    "z": 0,
-    "height": 720,
-    "width": 1280,
-    "tabOrder": 0
+    "x": 9.9606050289382821,
+    "y": 83.669082243081562,
+    "z": 1,
+    "height": 376.510870093867,
+    "width": 1456.2404552307769,
+    "tabOrder": 1
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Values": {
+        "Data": {
           "projections": [
             {
               "field": {
@@ -23,11 +23,67 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "GMV"
+                  "Property": "Extra Transit Days (late)"
                 }
               },
-              "queryRef": "_Measures.GMV",
-              "nativeQueryRef": "GMV"
+              "queryRef": "_Measures.Extra Transit Days (late)",
+              "nativeQueryRef": "Extra Transit Days (late)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Share of Late Orders"
+                }
+              },
+              "queryRef": "_Measures.Share of Late Orders",
+              "nativeQueryRef": "Share of Late Orders"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Extra Handover Days (late)"
+                }
+              },
+              "queryRef": "_Measures.Extra Handover Days (late)",
+              "nativeQueryRef": "Extra Handover Days (late)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Avg Score On Time"
+                }
+              },
+              "queryRef": "_Measures.Avg Score On Time",
+              "nativeQueryRef": "Avg Score On Time"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Late Share of Low Scores"
+                }
+              },
+              "queryRef": "_Measures.Late Share of Low Scores",
+              "nativeQueryRef": "Late Share of Low Scores"
             },
             {
               "field": {
@@ -42,62 +98,6 @@
               },
               "queryRef": "_Measures.Delivered Orders",
               "nativeQueryRef": "Delivered Orders"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Customers"
-                }
-              },
-              "queryRef": "_Measures.Customers",
-              "nativeQueryRef": "Customers"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "AOV"
-                }
-              },
-              "queryRef": "_Measures.AOV",
-              "nativeQueryRef": "AOV"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Late Rate"
-                }
-              },
-              "queryRef": "_Measures.Late Rate",
-              "nativeQueryRef": "Late Rate"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Freight Share"
-                }
-              },
-              "queryRef": "_Measures.Freight Share",
-              "nativeQueryRef": "Freight Share"
             }
           ]
         }
@@ -112,12 +112,13 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "GMV"
+                "Property": "Extra Transit Days (late)"
               }
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "drillFilterOtherVisuals": true

@@ -139,7 +139,5 @@ table Date
 				in
 				    mart_dim_date
 
-	changedProperty = Name
-
 	annotation PBI_ResultType = Table
 

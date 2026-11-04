@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "c36de0480231cdd587ad",
+  "position": {
+    "x": 231,
+    "y": 80.105676691084383,
+    "z": 2000,
+    "height": 100,
+    "width": 197,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Avg Score On Time"
+                }
+              },
+              "queryRef": "_Measures.Avg Score On Time",
+              "nativeQueryRef": "Avg Score On Time"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Avg Score On Time"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Score, on time'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Avg Score On Time"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

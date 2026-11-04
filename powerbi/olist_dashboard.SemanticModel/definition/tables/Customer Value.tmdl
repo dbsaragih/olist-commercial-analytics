@@ -27,8 +27,6 @@ table 'Customer Value'
 		summarizeBy: none
 		sourceColumn: cohort_month
 
-		changedProperty = DataType
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -191,6 +189,4 @@ table 'Customer Value'
 				    mart_customer_value = Source{[Schema="mart",Item="customer_value"]}[Data]
 				in
 				    mart_customer_value
-
-	changedProperty = Name
 

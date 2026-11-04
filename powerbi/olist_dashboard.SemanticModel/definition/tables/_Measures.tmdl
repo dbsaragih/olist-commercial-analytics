@@ -265,6 +265,79 @@ table _Measures
 		displayFolder: Customers
 		lineageTag: 815633a1-a255-4e6e-8f62-99517e876b1f
 
+	measure 'Avg Score On Time' =
+			
+			CALCULATE ( [Avg Review Score], Orders[is_late] = FALSE () )
+		formatString: 0.00
+		displayFolder: Delivery
+		lineageTag: d7a7878a-6814-4298-9053-7cd101a45aaa
+
+	measure 'Avg Score Late' =
+			
+			CALCULATE ( [Avg Review Score], Orders[is_late] = TRUE () )
+		formatString: 0.00
+		displayFolder: Delivery
+		lineageTag: b36be7e6-c3f0-4d6b-82bf-90734344b741
+
+	measure 'Late Share of Low Scores' =
+			
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[has_review] = TRUE (),
+			                Orders[review_score] <= 2, Orders[is_late] = TRUE () ),
+			    CALCULATE ( COUNTROWS ( Orders ), Orders[is_delivered] = TRUE (), Orders[has_review] = TRUE (),
+			                Orders[review_score] <= 2 )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Delivery
+		lineageTag: a6aac653-413f-4651-b5f7-077d2e9d7433
+
+	measure 'Avg Transit Days' =
+			
+			CALCULATE (
+			    AVERAGE ( Orders[carrier_transit_days] ),
+			    Orders[is_delivered] = TRUE (), Orders[excl_delivery_time] = FALSE (),
+			    Orders[excl_carrier_leg] = FALSE (), Orders[excl_handover] = FALSE ()
+			)
+		formatString: 0.0
+		displayFolder: Delivery
+		lineageTag: da2909c9-5435-4b0b-93bf-294ba732e5b9
+
+	measure 'Avg Handover Days' =
+			
+			CALCULATE (
+			    AVERAGE ( Orders[seller_handover_days] ),
+			    Orders[is_delivered] = TRUE (), Orders[excl_delivery_time] = FALSE (),
+			    Orders[excl_carrier_leg] = FALSE (), Orders[excl_handover] = FALSE ()
+			)
+		formatString: 0.0
+		displayFolder: Delivery
+		lineageTag: f798a71c-7017-4890-b09b-5accab5e2c21
+
+	measure 'Extra Transit Days (late)' =
+			
+			CALCULATE ( [Avg Transit Days], Orders[is_late] = TRUE () )
+			    - CALCULATE ( [Avg Transit Days], Orders[is_late] = FALSE () )
+		displayFolder: Delivery
+		lineageTag: 223f0833-90a2-4ea7-951c-58db89474b2c
+
+		formatStringDefinition = "+0.0;-0.0;0.0"
+
+	measure 'Share of Late Orders' =
+			
+			DIVIDE ( [Late Orders], CALCULATE ( [Late Orders], ALL ( Orders[delivery_region] ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Delivery
+		lineageTag: fb644941-6581-4ed6-a987-6d2145c69a21
+
+	measure 'Extra Handover Days (late)' =
+			
+			CALCULATE ( [Avg Handover Days], Orders[is_late] = TRUE () )
+			    - CALCULATE ( [Avg Handover Days], Orders[is_late] = FALSE () )
+		displayFolder: Delivery
+		lineageTag: d6c389f1-408c-43e1-8018-b60a3a24df9e
+
+		formatStringDefinition = "+0.0;-0.0;0.0"
+
 	partition _Measures = m
 		mode: import
 		source =

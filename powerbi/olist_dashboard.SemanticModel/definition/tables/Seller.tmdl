@@ -61,8 +61,6 @@ table Seller
 				in
 				    mart_dim_seller
 
-	changedProperty = Name
-
 	changedProperty = IsHidden
 
 	annotation PBI_ResultType = Table

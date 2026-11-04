@@ -102,7 +102,5 @@ table Customer
 				in
 				    mart_dim_customer
 
-	changedProperty = Name
-
 	annotation PBI_ResultType = Table
 

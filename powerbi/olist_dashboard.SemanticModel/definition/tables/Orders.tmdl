@@ -269,6 +269,14 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column delivery_timing
+		dataType: string
+		lineageTag: a8b950dc-cd69-4e57-8689-d333075ece11
+		summarizeBy: none
+		sourceColumn: delivery_timing
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Orders = m
 		mode: import
 		source =
@@ -277,8 +285,6 @@ table Orders
 				    mart_fact_orders = Source{[Schema="mart",Item="fact_orders"]}[Data]
 				in
 				    mart_fact_orders
-
-	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 
