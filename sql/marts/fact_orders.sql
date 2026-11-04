@@ -55,6 +55,16 @@ SELECT
     -- Delivery timing in days (NULL when not delivered)
     o.delivered_ts::date - o.purchase_ts::date         AS delivery_days,
     o.delivered_ts::date - o.estimated_delivery_date   AS days_vs_estimate,
+        CASE                                                                  -- BQ3 dose-response bucket
+        WHEN NOT o.is_delivered OR o.delivered_ts IS NULL THEN NULL
+        WHEN o.delivered_ts::date - o.estimated_delivery_date <= -10 THEN '1. 10+ days early'
+        WHEN o.delivered_ts::date - o.estimated_delivery_date <    0 THEN '2. 1-9 days early'
+        WHEN o.delivered_ts::date - o.estimated_delivery_date =    0 THEN '3. On the estimated day'
+        WHEN o.delivered_ts::date - o.estimated_delivery_date <=   3 THEN '4. 1-3 days late'
+        WHEN o.delivered_ts::date - o.estimated_delivery_date <=   7 THEN '5. 4-7 days late'
+        WHEN o.delivered_ts::date - o.estimated_delivery_date <=  14 THEN '6. 8-14 days late'
+        ELSE '7. 15+ days late'
+    END                                                AS delivery_timing,
     (o.delivered_ts::date > o.estimated_delivery_date) AS is_late,
     o.carrier_handover_ts::date - o.purchase_ts::date  AS seller_handover_days,
     o.delivered_ts::date - o.carrier_handover_ts::date AS carrier_transit_days,

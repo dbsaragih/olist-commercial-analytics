@@ -89,6 +89,8 @@ FROM (VALUES
                  WHERE o.is_delivered AND d.in_analysis_period))),
   (32, 'mart', 'RFM: one-time, high value, lapsed',      20954,
        (SELECT COUNT(*) FROM mart.customer_value
-         WHERE rfm_segment = '4. One-time, high value, lapsed'))
+         WHERE rfm_segment = '4. One-time, high value, lapsed')),
+  (33, 'mart', 'delivery_timing assigned (delivered)',   96470,
+       (SELECT COUNT(delivery_timing) FROM mart.fact_orders WHERE is_delivered))
 ) AS checks(n, layer, check_name, expected, actual)
 ORDER BY n;
