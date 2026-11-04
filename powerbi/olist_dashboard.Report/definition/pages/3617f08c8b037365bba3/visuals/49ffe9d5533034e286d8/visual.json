@@ -1,0 +1,172 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "49ffe9d5533034e286d8",
+  "position": {
+    "x": 9.6308488126028688,
+    "y": 0,
+    "z": 0,
+    "height": 346.71055725370326,
+    "width": 1696.9555607806255,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Active Sellers"
+                }
+              },
+              "queryRef": "_Measures.Active Sellers",
+              "nativeQueryRef": "Active Sellers"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Top 10% Sellers GMV Share"
+                }
+              },
+              "queryRef": "_Measures.Top 10% Sellers GMV Share",
+              "nativeQueryRef": "Top 10% Sellers GMV Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Top 10 Sellers GMV Share"
+                }
+              },
+              "queryRef": "_Measures.Top 10 Sellers GMV Share",
+              "nativeQueryRef": "Top 10 Sellers GMV Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Seller HHI"
+                }
+              },
+              "queryRef": "_Measures.Seller HHI",
+              "nativeQueryRef": "Seller HHI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Equivalent Sellers"
+                }
+              },
+              "queryRef": "_Measures.Equivalent Sellers",
+              "nativeQueryRef": "Equivalent Sellers"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sellers Under 1k Share"
+                }
+              },
+              "queryRef": "_Measures.Sellers Under 1k Share",
+              "nativeQueryRef": "Sellers Under 1k Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "One-Order Seller Share"
+                }
+              },
+              "queryRef": "_Measures.One-Order Seller Share",
+              "nativeQueryRef": "One-Order Seller Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Seller Late Rate"
+                }
+              },
+              "queryRef": "_Measures.Seller Late Rate",
+              "nativeQueryRef": "Seller Late Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Active Sellers"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Active Sellers"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

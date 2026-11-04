@@ -41,3 +41,17 @@ relationship 1735f9ce-a2e6-4081-aad2-8a3805e6838f
 
 	annotation PBI_IsFromSource = FS
 
+relationship 0449e7a5-62b6-46e9-8690-636be42cf43f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Customer Value'.customer_unique_id
+	toColumn: Customer.customer_unique_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship c0078fd0-335b-c3f6-542b-d2f2a63d3153
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Seller Value'.seller_id
+	toColumn: Seller.seller_id
+

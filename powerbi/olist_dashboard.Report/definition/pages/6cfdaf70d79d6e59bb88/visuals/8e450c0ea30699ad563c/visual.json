@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "8e450c0ea30699ad563c",
+  "position": {
+    "x": 24,
+    "y": 666,
+    "z": 9000,
+    "height": 36,
+    "width": 1232,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Sellers with delivered GMV, Jan 2017 – Aug 2018. Decile 1 = top 10% of sellers by GMV. Equivalent sellers = 10,000 ÷ HHI (GMV as if split equally among that many sellers). Service rates in the decile tooltips are item-weighted."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

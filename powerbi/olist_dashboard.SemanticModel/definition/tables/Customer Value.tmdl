@@ -3,18 +3,24 @@ table 'Customer Value'
 
 	column customer_unique_id
 		dataType: string
+		isHidden
 		lineageTag: 748968f6-4d0d-40ea-8e5c-15c9242ffe1e
 		summarizeBy: none
 		sourceColumn: customer_unique_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column first_purchase_date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: 6fa8f1db-8c64-43d7-9125-d081f78d22df
 		summarizeBy: none
 		sourceColumn: first_purchase_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -35,10 +41,13 @@ table 'Customer Value'
 
 	column last_purchase_date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: 3f948b35-f689-4d05-85d0-56d1589834bf
 		summarizeBy: none
 		sourceColumn: last_purchase_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -46,27 +55,36 @@ table 'Customer Value'
 
 	column orders
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: e99a301f-bb31-4c59-9387-9c85fef2f9f7
 		summarizeBy: sum
 		sourceColumn: orders
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column purchase_days
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 06b45642-d6ca-4883-a1f9-4e52c764a094
 		summarizeBy: sum
 		sourceColumn: purchase_days
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column gmv
 		dataType: double
+		isHidden
 		lineageTag: cb3718fb-6b28-4b01-b0ce-5fbbd3c16442
 		summarizeBy: sum
 		sourceColumn: gmv
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -83,10 +101,13 @@ table 'Customer Value'
 
 	column return_date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: d1c0200c-6dd0-4999-aa39-11d075695c67
 		summarizeBy: none
 		sourceColumn: return_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -94,55 +115,73 @@ table 'Customer Value'
 
 	column days_to_return
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: ba8a8c10-103d-4de9-bb1c-3d5e8b31ddda
 		summarizeBy: sum
 		sourceColumn: days_to_return
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column eligible_90d
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 517f5de9-f467-43ac-a84e-7ed9bdcb3288
 		summarizeBy: none
 		sourceColumn: eligible_90d
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column returned_90d
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: c97525ea-8cb6-46dd-9fd3-68ed0ef05432
 		summarizeBy: none
 		sourceColumn: returned_90d
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column eligible_180d
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 9dedbe13-80ca-4657-b332-6038e6f0396d
 		summarizeBy: none
 		sourceColumn: eligible_180d
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column returned_180d
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: a106cba3-672c-49db-b523-a0d025b86b61
 		summarizeBy: none
 		sourceColumn: returned_180d
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column recency_days
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 10816ff7-678c-4f18-9d97-1b6614dc4a37
 		summarizeBy: sum
 		sourceColumn: recency_days
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

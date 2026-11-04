@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "8cd8ee30444708d03c42",
+  "name": "fddaa4788544bb60b8cb",
   "position": {
-    "x": 9.9606050289382821,
-    "y": 539.86479256845485,
-    "z": 2,
-    "height": 308,
-    "width": 787,
-    "tabOrder": 2
+    "x": 645,
+    "y": 80.105676691084383,
+    "z": 4000,
+    "height": 100,
+    "width": 197,
+    "tabOrder": 4000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Y": {
+        "Data": {
           "projections": [
             {
               "field": {
@@ -23,11 +23,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Delivered Orders"
+                  "Property": "Equivalent Sellers"
                 }
               },
-              "queryRef": "_Measures.Delivered Orders",
-              "nativeQueryRef": "Delivered Orders"
+              "queryRef": "_Measures.Equivalent Sellers",
+              "nativeQueryRef": "Equivalent sellers",
+              "displayName": "Equivalent sellers"
             }
           ]
         }
@@ -42,7 +43,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Delivered Orders"
+                "Property": "Equivalent Sellers"
               }
             },
             "direction": "Descending"
@@ -50,6 +51,21 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

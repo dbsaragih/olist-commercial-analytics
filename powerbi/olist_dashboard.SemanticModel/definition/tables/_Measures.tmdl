@@ -338,6 +338,94 @@ table _Measures
 
 		formatStringDefinition = "+0.0;-0.0;0.0"
 
+	measure 'Top 10% Sellers GMV Share' =
+			
+			CALCULATE ( [Seller GMV Share], 'Seller Value'[gmv_decile] = 1 )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: 3e994b96-2a26-4013-a207-0c5d62d7fafd
+
+	measure 'Active Sellers' =
+			
+			COUNTROWS ( 'Seller Value' )
+		formatString: #,0
+		displayFolder: Sellers
+		lineageTag: 4f44992d-5d4d-4b1f-a594-389deb95a2f3
+
+	measure 'Seller GMV' =
+			
+			SUM ( 'Seller Value'[gmv] )
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Sellers
+		lineageTag: 11a1f4f7-e0e3-4fc0-87ea-237516b1d394
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Seller GMV Share' =
+			
+			DIVIDE ( [Seller GMV], CALCULATE ( [Seller GMV], ALL ( 'Seller Value' ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: f7fd979b-5d1a-4dc3-84e1-c4711996b10b
+
+	measure 'Seller Share' =
+			
+			DIVIDE ( [Active Sellers], CALCULATE ( [Active Sellers], ALL ( 'Seller Value' ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: d74c3729-e581-480a-8bca-6c965a71fcb9
+
+	measure 'Top 10 Sellers GMV Share' =
+			
+			CALCULATE ( [Seller GMV Share], 'Seller Value'[gmv_rank] <= 10 )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: ce20e05d-48d4-4bf0-8572-4092e74d29b6
+
+	measure 'Seller HHI' =
+			
+			VAR TotalGMV = CALCULATE ( SUM ( 'Seller Value'[gmv] ), ALL ( 'Seller Value' ) )
+			RETURN
+			    SUMX ( 'Seller Value', ( 100 * 'Seller Value'[gmv] / TotalGMV ) ^ 2 )
+		formatString: 0.0
+		displayFolder: Sellers
+		lineageTag: 0898f5a9-4379-4d18-b66c-f15086c6d76c
+
+	measure 'Equivalent Sellers' =
+			
+			DIVIDE ( 10000, [Seller HHI] )
+		formatString: #,0
+		displayFolder: Sellers
+		lineageTag: 9ca13e76-e96e-4b6e-a4b8-a447fd7c85de
+
+	measure 'Sellers Under 1k Share' =
+			
+			CALCULATE ( [Seller Share], 'Seller Value'[gmv_band] = "1. Under R$ 1k" )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: 246a25e5-e6db-4bbc-b717-14132704ef56
+
+	measure 'One-Order Seller Share' =
+			
+			CALCULATE ( [Seller Share], 'Seller Value'[is_one_order_seller] = TRUE () )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: c0902f00-fff0-4f39-a15d-806c388151d3
+
+	measure 'Seller Late Rate' =
+			
+			DIVIDE ( SUM ( 'Seller Value'[late_items] ), SUM ( 'Seller Value'[timed_items] ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: 85f9f22e-3f94-45db-a910-74dd9524e865
+
+	measure 'Seller Handover Late Rate' =
+			
+			DIVIDE ( SUM ( 'Seller Value'[handover_late_items] ), SUM ( 'Seller Value'[timed_items] ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Sellers
+		lineageTag: 696d3921-4737-4475-99df-3d2876714ba6
+
 	partition _Measures = m
 		mode: import
 		source =

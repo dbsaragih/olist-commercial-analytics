@@ -1,0 +1,134 @@
+table 'Seller Value'
+	lineageTag: 39ffc070-2077-4dd7-919c-7d67d60d8ea0
+
+	column seller_id
+		dataType: string
+		isHidden
+		lineageTag: 071f804d-7a76-4391-bf7e-c7b499381cd0
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column gmv
+		dataType: double
+		isHidden
+		lineageTag: b47bb9ae-1a30-424a-a7a9-31274cf26c14
+		summarizeBy: sum
+		sourceColumn: gmv
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column orders
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: be4f0bb7-561e-483e-a2c4-15c1eb46fdab
+		summarizeBy: sum
+		sourceColumn: orders
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column items
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 75fb134c-203f-4eeb-b96f-9c62275b9b1d
+		summarizeBy: sum
+		sourceColumn: items
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column timed_items
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 879813ca-7de9-4a62-b4eb-3807fb16142b
+		summarizeBy: sum
+		sourceColumn: timed_items
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column late_items
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 30219351-8ae3-4a5a-ac59-64b9bc1f4d95
+		summarizeBy: sum
+		sourceColumn: late_items
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column handover_late_items
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 01b2d89d-59d0-4a25-a743-83e13aa59112
+		summarizeBy: sum
+		sourceColumn: handover_late_items
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column gmv_rank
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 733a1898-2db3-4bc0-8828-ea8dd8085c9f
+		summarizeBy: sum
+		sourceColumn: gmv_rank
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column gmv_decile
+		dataType: int64
+		formatString: 0
+		lineageTag: e27ad366-a42f-4297-a557-32bf43299c42
+		summarizeBy: sum
+		sourceColumn: gmv_decile
+
+		annotation SummarizationSetBy = Automatic
+
+	column gmv_band
+		dataType: string
+		lineageTag: 8f0e24f4-9b4c-40a5-b07e-da44d31711d1
+		summarizeBy: none
+		sourceColumn: gmv_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_one_order_seller
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ba3a4905-76f6-4d2a-8e21-216d6158be4d
+		summarizeBy: none
+		sourceColumn: is_one_order_seller
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Seller Value' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "olist"),
+				    mart_seller_value = Source{[Schema="mart",Item="seller_value"]}[Data]
+				in
+				    mart_seller_value
+

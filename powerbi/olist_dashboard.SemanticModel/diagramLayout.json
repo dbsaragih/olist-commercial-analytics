@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 57.770349458306129,
-        "y": 0
+        "x": 170.26869416447715,
+        "y": 219.47930158454074
       },
       "nodes": [
         {
           "location": {
             "x": 385.22194900168057,
-            "y": 84.865031186886938
+            "y": 127.29754678033038
           },
           "nodeIndex": "Customer",
           "nodeLineageTag": "249a114e-17e7-47d1-95fd-8e6f7b3c3cce",
@@ -24,10 +24,23 @@
         {
           "location": {
             "x": 83.642261974384382,
-            "y": 103.19386399436632
+            "y": 96.668457109413282
           },
           "nodeIndex": "Date",
           "nodeLineageTag": "cc8c689e-ccad-4d66-b4e0-33905ac2bc0f",
+          "size": {
+            "height": 380.78057208935428,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 645.53468271202632,
+            "y": 188.57975514171397
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "6b0c4aa5-0270-44eb-b733-3bd84a9bcd35",
           "size": {
             "height": 300,
             "width": 234
@@ -36,34 +49,21 @@
         },
         {
           "location": {
-            "x": 645.53468271202632,
-            "y": 146.14723954827053
-          },
-          "nodeIndex": "Product",
-          "nodeLineageTag": "6b0c4aa5-0270-44eb-b733-3bd84a9bcd35",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 3
-        },
-        {
-          "location": {
             "x": 913,
-            "y": 135.76919336596706
+            "y": 120.67615004729458
           },
           "nodeIndex": "Seller",
           "nodeLineageTag": "f6c636e1-a107-44b1-aad3-f20ed2f2ce69",
           "size": {
-            "height": 200,
+            "height": 257.52555891211591,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 8
         },
         {
           "location": {
             "x": 725.86859258207778,
-            "y": 540.14475673019933
+            "y": 582.57727232364277
           },
           "nodeIndex": "Order Items",
           "nodeLineageTag": "9b7dae20-1b36-40e4-9afc-435a2adb18d4",
@@ -71,25 +71,25 @@
             "height": 511.77994011976034,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 3
         },
         {
           "location": {
             "x": 227.97588731433405,
-            "y": 523.85050809906193
+            "y": 566.28302369250537
           },
           "nodeIndex": "Orders",
           "nodeLineageTag": "b5b77418-080b-45d8-8e90-7522ff4e1463",
           "size": {
-            "height": 667.59730538922145,
+            "height": 723.89891623937751,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 4
         },
         {
           "location": {
             "x": 1066.3577380256156,
-            "y": 372.7871023199267
+            "y": 415.21961791337014
           },
           "nodeIndex": "_Measures",
           "nodeLineageTag": "cb5d3adb-b403-4f18-9c2e-66081bc0a41f",
@@ -97,12 +97,12 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 5
         },
         {
           "location": {
-            "x": 1321.7154760512312,
-            "y": 110.92820650061844
+            "x": 1428.1989574417437,
+            "y": 111.74648798742484
           },
           "nodeIndex": "Customer Value",
           "nodeLineageTag": "2d3a1e30-2ec7-48df-a8c1-6fd3f1f2ba23",
@@ -110,11 +110,24 @@
             "height": 583,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1120.1286779995976,
+            "y": 563.2229206922932
+          },
+          "nodeIndex": "Seller Value",
+          "nodeLineageTag": "39ffc070-2077-4dd7-919c-7d67d60d8ea0",
+          "size": {
+            "height": 402.81163720463269,
+            "width": 234
+          },
+          "zIndex": 7
         }
       ],
       "name": "All tables",
-      "zoomValue": 81.702813303915562,
+      "zoomValue": 81.2832884962352,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
