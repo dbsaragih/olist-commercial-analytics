@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Freight Share",
-              "nativeQueryRef": "Freight Share"
+              "nativeQueryRef": "Freight share",
+              "displayName": "Freight share"
             }
           ]
         }

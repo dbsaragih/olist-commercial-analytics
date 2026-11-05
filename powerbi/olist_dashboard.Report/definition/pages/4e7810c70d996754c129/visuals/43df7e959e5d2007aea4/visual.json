@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Late Rate",
-              "nativeQueryRef": "Late Rate"
+              "nativeQueryRef": "Late rate",
+              "displayName": "Late rate"
             }
           ]
         }

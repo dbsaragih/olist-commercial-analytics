@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Delivered Orders",
-              "nativeQueryRef": "Delivered Orders"
+              "nativeQueryRef": "Delivered orders",
+              "displayName": "Delivered orders"
             }
           ]
         }
