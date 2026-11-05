@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "fe2cba3932e201801ec6",
+  "position": {
+    "x": 24,
+    "y": 666,
+    "z": 9000,
+    "height": 36,
+    "width": 1232,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Delivered orders, Jan 2017 – Aug 2018. Freight share = freight ÷ (item price + freight), calculated as a ratio of sums, never an average of ratios. Region = delivery address at the time of the order. Typical order = median order-level freight share."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Active Sellers"
+                  "Property": "Freight per Item"
                 }
               },
-              "queryRef": "_Measures.Active Sellers",
-              "nativeQueryRef": "Active Sellers"
+              "queryRef": "_Measures.Freight per Item",
+              "nativeQueryRef": "Freight per Item"
             },
             {
               "field": {
@@ -37,11 +37,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Top 10% Sellers GMV Share"
+                  "Property": "Freight Share R$200+"
                 }
               },
-              "queryRef": "_Measures.Top 10% Sellers GMV Share",
-              "nativeQueryRef": "Top 10% Sellers GMV Share"
+              "queryRef": "_Measures.Freight Share R$200+",
+              "nativeQueryRef": "Freight Share R$200+"
             },
             {
               "field": {
@@ -51,11 +51,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Top 10 Sellers GMV Share"
+                  "Property": "Median Order Freight Share"
                 }
               },
-              "queryRef": "_Measures.Top 10 Sellers GMV Share",
-              "nativeQueryRef": "Top 10 Sellers GMV Share"
+              "queryRef": "_Measures.Median Order Freight Share",
+              "nativeQueryRef": "Median Order Freight Share"
             },
             {
               "field": {
@@ -65,11 +65,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Seller HHI"
+                  "Property": "Freight Share Under R$50"
                 }
               },
-              "queryRef": "_Measures.Seller HHI",
-              "nativeQueryRef": "Seller HHI"
+              "queryRef": "_Measures.Freight Share Under R$50",
+              "nativeQueryRef": "Freight Share Under R$50"
             },
             {
               "field": {
@@ -79,53 +79,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Equivalent Sellers"
+                  "Property": "Orders Over 25% Freight"
                 }
               },
-              "queryRef": "_Measures.Equivalent Sellers",
-              "nativeQueryRef": "Equivalent Sellers"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Sellers Under 1k Share"
-                }
-              },
-              "queryRef": "_Measures.Sellers Under 1k Share",
-              "nativeQueryRef": "Sellers Under 1k Share"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "One-Order Seller Share"
-                }
-              },
-              "queryRef": "_Measures.One-Order Seller Share",
-              "nativeQueryRef": "One-Order Seller Share"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Seller Late Rate"
-                }
-              },
-              "queryRef": "_Measures.Seller Late Rate",
-              "nativeQueryRef": "Seller Late Rate"
+              "queryRef": "_Measures.Orders Over 25% Freight",
+              "nativeQueryRef": "Orders Over 25% Freight"
             }
           ]
         }
@@ -140,7 +98,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Active Sellers"
+                "Property": "Freight per Item"
               }
             },
             "direction": "Descending"
@@ -148,24 +106,6 @@
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "value": [
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Active Sellers"
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

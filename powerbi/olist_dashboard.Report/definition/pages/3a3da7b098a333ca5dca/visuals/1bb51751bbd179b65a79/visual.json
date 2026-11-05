@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1bb51751bbd179b65a79",
+  "position": {
+    "x": 438,
+    "y": 80.105676691084383,
+    "z": 3000,
+    "height": 100,
+    "width": 197,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Median Order Freight Share"
+                }
+              },
+              "queryRef": "_Measures.Median Order Freight Share",
+              "nativeQueryRef": "Median Order Freight Share"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Median Order Freight Share"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Typical order'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Median Order Freight Share"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

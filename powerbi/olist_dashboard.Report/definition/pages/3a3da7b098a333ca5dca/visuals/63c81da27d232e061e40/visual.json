@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "63c81da27d232e061e40",
+  "position": {
+    "x": 1059,
+    "y": 80.105676691084383,
+    "z": 6000,
+    "height": 100,
+    "width": 197,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Freight Share R$200+"
+                }
+              },
+              "queryRef": "_Measures.Freight Share R$200+",
+              "nativeQueryRef": "Freight Share R$200+"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Freight Share R$200+"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Items R$ 200+'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Freight Share R$200+"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

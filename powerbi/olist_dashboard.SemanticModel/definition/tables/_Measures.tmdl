@@ -426,6 +426,55 @@ table _Measures
 		displayFolder: Sellers
 		lineageTag: 696d3921-4737-4475-99df-3d2876714ba6
 
+	measure 'Freight per Item' =
+			
+			DIVIDE ( [Freight], [Items Sold] )
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Freight
+		lineageTag: 084dc6ee-4665-40b6-8afc-12d820b237d8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Median Order Freight Share' =
+			
+			MEDIANX (
+			    FILTER ( Orders, Orders[is_delivered] = TRUE () ),
+			    DIVIDE ( Orders[order_freight], Orders[order_gmv] + Orders[order_freight] )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Freight
+		lineageTag: 4f0d140b-535f-408d-aeff-7aad7698e9f4
+
+	measure 'Orders Over 25% Freight' =
+			
+			DIVIDE (
+			    COUNTROWS (
+			        FILTER (
+			            Orders,
+			            Orders[is_delivered] = TRUE ()
+			                && DIVIDE ( Orders[order_freight], Orders[order_gmv] + Orders[order_freight] ) > 0.25
+			        )
+			    ),
+			    [Delivered Orders]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Freight
+		lineageTag: 2d3ecf02-5a21-4979-bd52-a8a499926bce
+
+	measure 'Freight Share Under R$50' =
+			
+			CALCULATE ( [Freight Share], 'Order Items'[price_band] = "1. Under R$ 50" )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Freight
+		lineageTag: 028a07a4-f600-43d6-b6a4-9222f6588927
+
+	measure 'Freight Share R$200+' =
+			
+			CALCULATE ( [Freight Share], 'Order Items'[price_band] = "4. R$ 200 and over" )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Freight
+		lineageTag: f6b744f0-cf1c-4584-bb68-df57b69afb7e
+
 	partition _Measures = m
 		mode: import
 		source =

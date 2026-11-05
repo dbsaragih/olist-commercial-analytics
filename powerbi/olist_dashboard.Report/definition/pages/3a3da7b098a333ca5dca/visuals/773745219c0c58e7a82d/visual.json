@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "773745219c0c58e7a82d",
+  "position": {
+    "x": 852,
+    "y": 80.105676691084383,
+    "z": 5000,
+    "height": 100,
+    "width": 197,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Freight Share Under R$50"
+                }
+              },
+              "queryRef": "_Measures.Freight Share Under R$50",
+              "nativeQueryRef": "Freight Share Under R$50"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Freight Share Under R$50"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Items under R$ 50'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Freight Share Under R$50"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

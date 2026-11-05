@@ -183,6 +183,14 @@ table 'Order Items'
 
 		annotation SummarizationSetBy = Automatic
 
+	column price_band
+		dataType: string
+		lineageTag: e42da5fe-7f42-4509-bf4c-46ca178b702f
+		summarizeBy: none
+		sourceColumn: price_band
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Order Items' = m
 		mode: import
 		source =
