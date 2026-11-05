@@ -2,8 +2,23 @@
 
 **End-to-end analytics project on the Olist Brazilian e-commerce dataset: from raw data to business recommendations.**
 
->**Status: in progress.** Analysis complete; Power BI dashboard in progress.
+> **Status:** analysis and Power BI dashboard complete; recommendations deck next.
+
 ---
+
+## Dashboard preview
+
+![Overview page of the Olist Power BI dashboard](reports/figures/dashboard_overview.png)
+
+| Growth (BQ1) | Customers (BQ2) |
+|---|---|
+| ![Growth page](reports/figures/dashboard_growth.png) | ![Customers page](reports/figures/dashboard_customers.png) |
+| **Delivery (BQ3)** | **Sellers (BQ4)** |
+| ![Delivery page](reports/figures/dashboard_delivery.png) | ![Sellers page](reports/figures/dashboard_sellers.png) |
+| **Freight (BQ5)** | |
+| ![Freight page](reports/figures/dashboard_freight.png) | |
+
+Full report, all pages including the reconciliation page: [docs/Olist_Dashboard.pdf](docs/Olist_Dashboard.pdf). Power BI project files: [`powerbi/`](powerbi/).
 
 ## 1. Business context
 
@@ -19,7 +34,7 @@ The project answers five business questions, each tied to a stakeholder and a de
 | BQ4 | Which sellers generate the most GMV, and does their service quality keep up? | Head of Marketplace | Which sellers to support vs. which need intervention |
 | BQ5 | How does freight cost burden vary by category and region, and does it affect reviews? | Chief Commercial Officer | Shipping rate rules and targeted freight subsidies |
 
-Full definitions, hypotheses and scope: [docs/01_problem_statement.md](docs/01_problem_statement.md)
+Full definitions, hypotheses and scope: [docs/01_problem_statement.md](docs/01_problem_statement.md). Findings: [docs/05_findings.md](docs/05_findings.md).
 
 ## 2. Dataset
 
@@ -37,9 +52,9 @@ A reproducible ETL pipeline (ELT pattern) loads 1.55 million rows from 9 source 
 |---|---|---|
 | `raw` | Exact copy of the 9 source files, validated by row counts | `src/load_raw.py` |
 | `staging` | 8 views: correct types, consistent names, data-quality flags | `sql/staging/` |
-| `mart` | Star schema: 4 dimensions, 2 fact tables, enforced primary and foreign keys | `sql/marts/` |
+| `mart` | Star schema (4 dimensions, 2 fact tables) plus 2 analysis tables (`customer_value`, `seller_value`); enforced primary and foreign keys | `sql/marts/` |
 
-One command (`py run_pipeline.py`) rebuilds every layer in dependency order and runs 32 automated checks against independently verified numbers, stopping with a clear message if any step or check fails.
+One command (`py run_pipeline.py`) rebuilds every layer in dependency order and runs 39 automated checks against independently verified numbers, stopping with a clear message if any step or check fails.
 Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 
 ## 4. Progress
@@ -54,11 +69,11 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | 6. Data quality findings | [docs/02_data_quality_findings.md](docs/02_data_quality_findings.md) | ✅ Done |
 | 7. Data model | [docs/03_data_model.md](docs/03_data_model.md) (star schema design) | ✅ Done |
 | 8. Staging layer | 8 views in `sql/staging/`, with tests | ✅ Done |
-| 9. Mart layer | 4 dimensions and 2 fact tables in `sql/marts/`, with tests | ✅ Done |
-| 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 32 checks | ✅ Done |
+| 9. Mart layer | 4 dimensions, 2 fact tables and 2 analysis tables in `sql/marts/`, with tests | ✅ Done |
+| 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 39 checks | ✅ Done |
 | 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ✅ Done |
-| 12. Dashboard | Power BI executive dashboard | 🔄 In progress |
-| 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Planned |
+| 12. Dashboard | Power BI report: 6 analysis pages + reconciliation page ([PDF](docs/Olist_Dashboard.pdf)) | ✅ Done |
+| 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Next |
 
 ## 5. Documentation
 
@@ -68,10 +83,10 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | [02 Data quality findings](docs/02_data_quality_findings.md) | Profiling results and decision log |
 | [03 Data model](docs/03_data_model.md) | Star schema design |
 | [04 ETL pipeline](docs/04_etl_pipeline.md) | Layers, data quality controls, how to run |
-| [05 — Findings](docs/05_findings.md) | Executive summary and findings for BQ1–BQ5 |
+| [05 Findings](docs/05_findings.md) | Executive summary and findings for BQ1–BQ5 |
 | [RFM and CLV notebook](notebooks/01_rfm_clv.ipynb) | Python customer segmentation and lifetime value |
-
-## 6. Repository structure
+| [Dashboard (PDF)](docs/Olist_Dashboard.pdf) | All Power BI pages, including the reconciliation page |
+| [ETL process map (PDF)](docs/Olist_ETL_Process_Map.pdf) | Visual map of the pipeline, code, tools and fixes |
 
 ## 6. Repository structure
 
@@ -82,30 +97,32 @@ olist-commercial-analytics/
 ├── sql/
 │   ├── 01–03_profile_*  # data profiling queries
 │   ├── staging/         # 8 staging views
-│   ├── marts/           # star schema: 4 dimensions, 2 facts
+│   ├── marts/           # star schema (4 dims, 2 facts) + customer/seller value tables
 │   └── analysis/        # BQ1–BQ5 analysis queries
-├── tests/               # layer tests and the 32 pipeline checks
+├── tests/               # layer tests and the 39 pipeline checks
 ├── notebooks/           # Python: RFM segmentation and CLV
 ├── powerbi/             # Power BI project (.pbip) and theme
 ├── reports/figures/     # exported charts and dashboard images
-├── docs/                # problem statement, data quality, model, pipeline, findings
+├── docs/                # problem statement, data quality, model, pipeline, findings, PDFs
 ├── deck/                # presentation (coming)
 ├── requirements.txt
 └── README.md
 ```
 
 Raw data (`data/`), credentials (`.env`) and the Power BI data cache are excluded from Git.
+
 ## 7. How to run
 
 1. Clone this repo and create a virtual environment: run `py -m venv .venv`, then `.venv\Scripts\activate`, then `pip install -r requirements.txt`.
 2. Download the dataset from the Kaggle link above and place the 9 CSV files in `data/raw/`.
 3. Create a `.env` file with your PostgreSQL connection details (not included in the repo).
-4. Run the pipeline with the virtual environment active: `py run_pipeline.py`. This loads the raw data, builds the staging views and the star schema, and runs 32 automated checks. It ends with `PIPELINE OK`, or names the step or check that failed.
+4. Run the pipeline with the virtual environment active: `py run_pipeline.py`. This loads the raw data, builds the staging views, the star schema and the analysis tables, and runs 39 automated checks. It ends with `PIPELINE OK`, or names the step or check that failed.
 5. To rebuild only the SQL layers after changing a query, run `py run_pipeline.py --skip-load`.
+6. To view the dashboard, open `powerbi/olist_dashboard.pbip` in Power BI Desktop and click **Refresh** (it connects to your local PostgreSQL database).
 
 ## 8. Tools
 
-Python (pandas, SQLAlchemy) · PostgreSQL · SQL · Power BI · Git & GitHub
+Python (pandas, NumPy, matplotlib, SQLAlchemy, Jupyter) · PostgreSQL · SQL · Power BI (DAX) · Git & GitHub
 
 ---
 
