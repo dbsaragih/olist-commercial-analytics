@@ -73,7 +73,7 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | 10. Pipeline automation | `run_pipeline.py`: one command rebuilds all layers and runs 39 checks | ✅ Done |
 | 11. Analysis | SQL + Python analysis answering BQ1–BQ5 | ✅ Done |
 | 12. Dashboard | Power BI report: 6 analysis pages + reconciliation page ([PDF](docs/Olist_Dashboard.pdf)) | ✅ Done |
-| 13. Recommendations | Findings, recommendations and presentation deck | ⏳ Next |
+| 13. Recommendations | Findings, recommendations and presentation deck | ✅ Done |
 
 ## 5. Documentation
 
@@ -87,6 +87,7 @@ Details: [docs/04_etl_pipeline.md](docs/04_etl_pipeline.md)
 | [RFM and CLV notebook](notebooks/01_rfm_clv.ipynb) | Python customer segmentation and lifetime value |
 | [Dashboard (PDF)](docs/Olist_Dashboard.pdf) | All Power BI pages, including the reconciliation page |
 | [ETL process map (PDF)](docs/Olist_ETL_Process_Map.pdf) | Visual map of the pipeline, code, tools and fixes |
+| [Recommendations deck (PDF)](deck/Olist_Growth_Recommendations.pdf) | 12-slide storyline: findings, five levers and three 90-day tests |
 
 ## 6. Repository structure
 
